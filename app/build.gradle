@@ -13,6 +13,7 @@ plugins {
     id 'java'
 
 }
+// 이 사이에 추가하면 돼
 
 repositories {
     // Use Maven Central for resolving dependencies.
