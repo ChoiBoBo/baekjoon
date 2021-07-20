@@ -2,21 +2,32 @@ package baekjoon;
 
 import java.util.Scanner;
 
+//첫째 줄에, 42로 나누었을 때, 
+//서로 다른 나머지가 몇 개 있는지 출력한다.
+
+
+
 public class Test3052 {
 
   public static void main(String[] args) {
-    Scanner in = new Scanner(System.in);
-    int A = in.nextInt();
-    //        int B = in.nextInt();
-    in.close();
+    Scanner sc = new Scanner(System.in);
 
-    int[] arr = new int[9];
+    int arr[] = new int[10];
+    int count = 0;
+    int counts[] = new int[42];
+    for(int i=0; i<arr.length; i++) {
+      arr[i] = sc.nextInt(); //arr[0]에 키보드 입력값을 레퍼런스 대입 //  
+    }
+    sc.close();
 
-
-        for(A <= arr.length) {
-          
+    for(int i=0; i<arr.length; i++) {
+      counts[arr[i]%42]++;
+    }
+    for(int i=0; i<counts.length; i++) {
+      if(counts[i] != 0) {
+        count++;
       }
-        
-        A % 43
+    }
+    System.out.println(count);
   }
 }

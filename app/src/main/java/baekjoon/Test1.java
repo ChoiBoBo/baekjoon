@@ -2,12 +2,22 @@ package baekjoon;
 
 public class Test1 {
 
-  public static void main(String[] args) {
+  static int countEvenNumber(int value) {
+    // 코드를 완성하시오
 
-    //Hello World!를 출력하시오.
-
-    System.out.println("Hello World!");
+    int number = value;
+    int count = 0;
+    while(number > 0){
+      if(number % 2 == 0){
+        count++;
+      }
+      number /= 10;
+    }
+    return count;
 
   }
 
+  public static void main(String[] args) {
+    System.out.println(countEvenNumber(1238694636));
+  }
 }
