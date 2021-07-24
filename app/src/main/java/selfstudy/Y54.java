@@ -1,32 +1,22 @@
 package selfstudy;
 
+import org.checkerframework.checker.units.qual.mm;
 
 class Y54{
   public static void main(String[] args) {
-    mm.printGugudan(3);
+
+
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+
+    int[] a = {100, 200, 300};
+    System.out.println("mm.add(a) 결과 " + mm.add(a));
 
 
   }
-}
-
-
-class Mtmth {
-  void printGugudan(int dan) {
-
-    if(!(2 <= dan && dan <= 9)) {
-      return;
-    }
-
-    System.out.printf("%d * %d = %d%n",);
-
-    long max (long a, long b) {
-
-    }
-
-
-
-  }
-
-
 }
 
