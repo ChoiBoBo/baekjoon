@@ -7,30 +7,30 @@ import java.util.Scanner;
 
 
 
-public class Test3052 {
+public class Test3053_1 {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
     int arr[] = new int[10];
-
     int count = 0;
-
     int counts[] = new int[42];
 
-    for(int i=0; i<arr.length; i++) {
-      arr[i] = sc.nextInt(); //arr[0]에 키보드 입력값을 레퍼런스 대입 //  
+    for(int i = 0; i < arr.length; i++) {
+      arr[i] = sc.nextInt();
     }
     sc.close();
 
-    for(int i=0; i<arr.length; i++) {
+    for(int i = 0; i<arr.length; i++) {
       counts[arr[i]%42]++;
     }
-    for(int i=0; i<counts.length; i++) {
+
+    for(int i = 0; i < counts.length; i++) {
       if(counts[i] != 0) {
         count++;
       }
     }
+
     System.out.println(count);
   }
 }
