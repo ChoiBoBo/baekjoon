@@ -2,30 +2,36 @@ package baekjoon;
 
 import java.util.Scanner;
 
-//첫째 줄에, 42로 나누었을 때, 
-//서로 다른 나머지가 몇 개 있는지 출력한다.
-
 public class Test3052_T {
 
   public static void main(String[] args) {
-
+    // Scanner를 통해 입력값은 받는다.
     Scanner sc = new Scanner(System.in);
 
+    int arr[] = new int [10];
+    int [] results = new int[42];
+    int count = 0;
 
-    int arr[] = new int[10];
-
-    //입력값을 10개를 배열로 받는다.
+    // 입력값을 arr배열 주소에 넣는다. 
     for(int i = 0; i < arr.length; i++) {
       arr[i] = sc.nextInt();
     }
     sc.close();
 
-    // 받은 배열에 %42를 한 값을 배열로 받는다.
+    // arr배열%42의 값을 results 값에 넣는다. // results는 42개
+    for(int i = 0; i < arr.length; i++) {
+      results[arr[i] % 42]++;
+    }
 
-    // 그 배열의 값이 0과 같다면 count를 한다.
+    // results != 0 이면, count에 추가 한다.
+    for(int i = 0; i < results.length; i++) {
+      results[i]++;
+      if(results[i] != 0) {
+        count++;
+      }
+    }
 
     // count 출력을 한다.
-
-
+    System.out.println(count);
   }
 }
