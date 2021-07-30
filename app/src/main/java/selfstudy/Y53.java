@@ -12,6 +12,10 @@ class Y53{
     System.out.println("Max(5, 3) = " + result);
     System.out.println("add(5L, 3L) = " + result1);
 
+    //    Tv t1 = new Tv();
+    //    Tv t2 = new Tv();
+    //    System.out.println("t1.channel ");
+    //    System.out.println("t2.channel ");
 
 
   }
@@ -25,6 +29,7 @@ class MyMath{
   long max(long a, long b) {
     return a> b ? a : b;
   }
+
 
 
 
