@@ -5,17 +5,22 @@ import java.util.Scanner;
 public class Test10952 {
 
   public static void main(String[] args) {
-    Scanner in = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
-    while(true) {
-      int A = in.nextInt();
-      int B = in.nextInt();
 
-      if(A==0 && B==0) {
-        break;
-      }
-      System.out.println(A+B);
+
+    // sc.nextint() 로 입력값을 담는 A,B를 생성
+    int A = sc.nextInt();
+    int B = sc.nextInt();
+
+    if(0 < A || B <10) {
+      int result = A + B;
     }
+    // result = a + b
+
+    System.out.println(result);
+    // ssysout 
+
 
   }
 }
