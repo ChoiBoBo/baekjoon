@@ -1,22 +1,26 @@
 package selfstudy;
 
-import org.checkerframework.checker.units.qual.mm;
-
 class Y54{
   public static void main(String[] args) {
 
+    Tv t1 = new Tv();
+    Tv t2 = new Tv();
 
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    System.out.println();
+    t1.chanel = 7;
+    t1.chaneldown();
+    System.out.println(t1.chanel);
 
-    int[] a = {100, 200, 300};
-    System.out.println("mm.add(a) 결과 " + mm.add(a));
-
-
+    t1 = t2; //참조변수 t1의 값을 t2에 저장.
+    System.out.println(t1.chanel);
   }
 }
 
+class Tv {
+  String color;
+  boolean power;
+  int chanel;
+
+  void power() { power =! power;}
+  void chanelUp() {++chanel;}
+  void chaneldown() {--chanel;}
+}
