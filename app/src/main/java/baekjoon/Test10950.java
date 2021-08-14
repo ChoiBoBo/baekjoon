@@ -2,23 +2,21 @@ package baekjoon;
 
 import java.util.Scanner;
 
-// 1330 문제
+// 10950 문제
 public class Test10950 {
 
   public static void main(String[] args) {
 
-    Scanner keyboardScan = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
-    int A = keyboardScan.nextInt();
-    int B = keyboardScan.nextInt();
+    int n = sc.nextInt();
 
-    if(A > B) {
-      System.out.println(">");
-    }else if(A < B) {
-      System.out.println("<");
-    }else {
-      System.out.println("==");
+    for(int i = 1; i <= n; i++) {
+      int a = sc.nextInt();
+      int b = sc.nextInt();
+      System.out.println(a + b);
     }
   }
-
 }
+
+
