@@ -3,7 +3,7 @@ package baekjoon;
 public class Test1 {
 
   static int countEvenNumber(int value) {
-    // 코드를 완성하시오
+    // 코드를 완성하시오 assa
 
     int number = value;
     int count = 0;
