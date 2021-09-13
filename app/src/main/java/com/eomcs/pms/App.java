@@ -3,30 +3,34 @@ package com.eomcs.pms;
 import java.util.Date;
 import java.util.Scanner;
 
-// 1) 배열 사용 전
-// 2) 배열 사용 후
-// 3)
-// 4)
-// 5)
+//1) 배열 사용 전
+//2) 배열 사용 후
+//3) 반복문 적용 : while 문
+//4) 반복문 적용 : for 문
+//5) 여러 문장에서 반복해서 사용하는 값은 변수에 담아서 사용한다.
+//6) 조회용으로만 사용할 변수라면 상수로 선언한다.
+// 7) 
+// 8)
 public class App {
 
   public static void main(String[] args) {
     System.out.println("[회원]");
 
-    int maxLENGTH = 3;
+    final int MAX_LENGTH = 3;
 
-    int[] no = new int[5];
-    String[] name = new String[5];
-    String[] email = new String[5];
-    String[] password = new String[5];
-    String[] photo = new String[5]; 
-    String[] tel = new String[5];
-    Date[] registeredDate = new Date[5];
+    int[] no = new int[MAX_LENGTH];
+    String[] name = new String[MAX_LENGTH];
+    String[] email = new String[MAX_LENGTH];
+    String[] password = new String[MAX_LENGTH];
+    String[] photo = new String[MAX_LENGTH]; 
+    String[] tel = new String[MAX_LENGTH];
+    Date[] registeredDate = new Date[MAX_LENGTH];
 
     Scanner keyboardScan = new Scanner(System.in);
 
-    for(int i = 0; i < 5; i++) {
+    int size = 0;
 
+    for (int i = 0; i < MAX_LENGTH; i = i + 1) {
       System.out.print("번호? ");
       no[i] = Integer.parseInt(keyboardScan.nextLine());
       System.out.print("이름? ");
@@ -40,23 +44,29 @@ public class App {
       System.out.print("전화? ");
       tel[i] = keyboardScan.nextLine();
       registeredDate[i] = new Date();
+      size++;
+
       System.out.println();
+
+
+      System.out.println("계속 입력하시겠습니까? (Y/N)");
+      String input = keyboardScan.nextLine();
+      if(input.equalsIgnoreCase("N") || input.equals("")) {
+        break;
+      }
+
     }
-    keyboardScan.close(); 
+    keyboardScan.close(); // 데이터 입출력이 끝났으면 도구를 닫는다.
 
     System.out.println("--------------------------------");
 
-    for(int i = 0; i < 5; i++) {
-
-      System.out.println("번호: " + no[i]);
-      System.out.println("이름: " + name[i]);
-      System.out.println("이메일: " + email[i]);
-      System.out.printf("암호: %s\n", password[i]);
-      System.out.printf("사진: %s\n", photo[i]);
-      System.out.printf("전화: %s\n", tel[i]);
-      System.out.printf("가입일: %s\n", registeredDate[i]);
-      System.out.println();
+    for (int i = 0; i < size; i = i + 1) {
+      System.out.printf("%d, %s, %s, %s, %tY-%5$tm-%5$td\n", 
+          no[i],
+          name[i],
+          email[i],
+          tel[i],
+          registeredDate[i]);
     }
-
   }
 }
