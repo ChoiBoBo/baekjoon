@@ -1,18 +1,31 @@
 package selfstudy;
 
-public class Y060 {
+public class Y61 {
   public static void main(String[] args) {
-    MyMath1 mm = new MyMath1();
+    MyMath2 mm = new MyMath2();
 
     long result1 = mm.add(3L, 5L);
     System.out.println(result1);
 
     int result2 = mm.max(4, 2);
     System.out.println(result2);
+
+    mm.printGugudan(2);
   }
 }
 
-class MyMath1 {
+class MyMath2 {
+
+  void printGugudan(int dan) {
+    if(!(2 <= dan && dan <= 9)) 
+      return;
+
+
+    for(int i = 1; i < 9; i++) {
+      System.out.printf("%d * %d = %d%n", dan, i, dan * i);
+    } 
+    //    return; //생략
+  }
 
   long add(long a, long b) {
     long result = a + b;

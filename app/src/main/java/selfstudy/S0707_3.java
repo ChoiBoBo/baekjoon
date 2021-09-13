@@ -7,7 +7,7 @@ public class S0707_3 {
     //bitcamp-study > java-basic > ex99 > Exam0210~0250
 
 
-    //    Exam0230
+    //    Exam0230 입니다.
 
 
     java.io.InputStream keyboard = System.in;
