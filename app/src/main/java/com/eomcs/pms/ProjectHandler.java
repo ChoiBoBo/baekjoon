@@ -1,41 +1,40 @@
 package com.eomcs.pms;
 
-import java.sql.Date;
-
 public class ProjectHandler {
 
+  static final int LENGTH = 5;
 
-  // 프로젝트 정보
-  static final int LENGTH = 1000;
-  static int[] pNo = new int[LENGTH];
-  static String[] pTitle = new String[LENGTH];
-  static String[] pContent = new String[LENGTH];
-  static Date[] pStartDate = new Date[LENGTH];
-  static Date[] pEndDate = new Date[LENGTH];
-  static String[] pOwner = new String[LENGTH];
-  static String[] pMembers = new String[LENGTH];
-  static int pSize = 0;
+  static Project[] projects = new Project[LENGTH];
+
+  static int size = 0;
 
   static void add() {
     System.out.println("[프로젝트 등록]");
 
-    pNo[pSize] = Prompt.inputInt("번호? ");
-    pTitle[pSize] = Prompt.inputString("프로젝트명? ");
-    pContent[pSize] = Prompt.inputString("내용? ");
-    pStartDate[pSize] = Prompt.inputDate("시작일? ");
-    pEndDate[pSize] = Prompt.inputDate("종료일? ");
-    pOwner[pSize] = Prompt.inputString("만든이? ");
-    pMembers[pSize] = Prompt.inputString("팀원? ");
+    Project project = new Project();
 
-    pSize++;
+    project.no = Prompt.inputInt("번호? ");
+    project.title = Prompt.inputString("프로젝트명? ");
+    project.content = Prompt.inputString("내용? ");
+    project.startDate = Prompt.inputDate("시작일? ");
+    project.endDate = Prompt.inputDate("종료일? ");
+    project.owner = Prompt.inputString("만든이? ");
+    project.members = Prompt.inputString("팀원? ");
+
+    projects[size++] = project;
   }
 
   static void list() {
     System.out.println("[프로젝트 목록]");
-    for (int i = 0; i < pSize; i++) {
-      // 번호, 프로젝트명, 시작일, 종료일, 만든이
-      System.out.printf("%d, %s, %s, %s, %s\n", // 출력 형식 지정
-          pNo[i], pTitle[i], pStartDate[i], pEndDate[i], pOwner[i]);
+    for (int i = 0; i < size; i++) {
+      System.out.printf("%d, %s, %s, %s, %s\n",
+          projects[i].no,
+          projects[i].title,
+          projects[i].content,
+          projects[i].startDate,
+          projects[i].endDate,
+          projects[i].owner,
+          projects[i].members);
     }
   }
 }

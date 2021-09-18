@@ -1,9 +1,5 @@
 package com.eomcs.pms;
 
-//1)
-//2)
-//3)
-//4)
 public class App {
 
   public static void main(String[] args) {
@@ -38,6 +34,7 @@ public class App {
       System.out.println();
     }
 
+    // Prompt 가 소유하고 관리하고 있는 자원을 닫으라고 명령한다. 
     Prompt.close();
   }
 }
