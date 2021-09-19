@@ -1,14 +1,15 @@
-package com.eomcs.pms;
+package com.eomcs.pms.handler;
+
+import com.eomcs.pms.domain.Project;
+import com.eomcs.util.Prompt;
 
 public class ProjectHandler {
 
-  static final int LENGTH = 5;
-
-  static Project[] projects = new Project[LENGTH];
-
+  static final int MAX_LENGTH = 5;
+  static Project[] projects = new Project[MAX_LENGTH];
   static int size = 0;
 
-  static void add() {
+  public static void add() {
     System.out.println("[프로젝트 등록]");
 
     Project project = new Project();
@@ -24,17 +25,15 @@ public class ProjectHandler {
     projects[size++] = project;
   }
 
-  static void list() {
+  public static void list() {
     System.out.println("[프로젝트 목록]");
     for (int i = 0; i < size; i++) {
       System.out.printf("%d, %s, %s, %s, %s\n",
-          projects[i].no,
-          projects[i].title,
-          projects[i].content,
-          projects[i].startDate,
-          projects[i].endDate,
-          projects[i].owner,
-          projects[i].members);
+          projects[i].no, 
+          projects[i].title, 
+          projects[i].startDate, 
+          projects[i].endDate, 
+          projects[i].owner);
     }
   }
 }

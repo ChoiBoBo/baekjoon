@@ -1,17 +1,20 @@
-package com.eomcs.pms;
+package com.eomcs.pms.handler;
+
+import com.eomcs.pms.domain.Task;
+import com.eomcs.util.Prompt;
 
 public class TaskHandler {
 
-  static final int LENGTH = 5;
-
+  static final int MAX_LENGTH = 5;
+  static Task[] tasks = new Task[MAX_LENGTH];
   static int size = 0;
-  static Task[] tasks = new Task[LENGTH]; 
 
-  static void add() {
+  public static void add() {
     System.out.println("[작업 등록]");
 
     Task task = new Task();
-    task.no= Prompt.inputInt("번호? ");
+
+    task.no = Prompt.inputInt("번호? ");
     task.content = Prompt.inputString("내용? ");
     task.deadline = Prompt.inputDate("마감일? ");
 
@@ -25,7 +28,7 @@ public class TaskHandler {
     tasks[size++] = task;
   }
 
-  static void list() {
+  public static void list() {
     System.out.println("[작업 목록]");
 
     for (int i = 0; i < size; i++) {
@@ -42,12 +45,11 @@ public class TaskHandler {
       }
 
       System.out.printf("%d, %s, %s, %s, %s\n",
-          tasks[i].no,
-          tasks[i].content,
-          tasks[i].deadline,
-          tasks[i].status,
-          tasks[i].owner
-          );
+          tasks[i].no, 
+          tasks[i].content, 
+          tasks[i].deadline, 
+          stateLabel, 
+          tasks[i].owner);
     }
   }
 
