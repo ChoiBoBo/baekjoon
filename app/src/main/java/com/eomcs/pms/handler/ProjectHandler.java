@@ -3,12 +3,14 @@ package com.eomcs.pms.handler;
 import com.eomcs.pms.domain.Project;
 import com.eomcs.util.Prompt;
 
+//1)
 public class ProjectHandler {
 
   static final int MAX_LENGTH = 5;
   static Project[] projects = new Project[MAX_LENGTH];
   static int size = 0;
 
+  //다른 패키지에 있는 App 클래스가 다음 메서드를 호출할 수 있도록 공개한다.
   public static void add() {
     System.out.println("[프로젝트 등록]");
 
@@ -25,6 +27,7 @@ public class ProjectHandler {
     projects[size++] = project;
   }
 
+  //다른 패키지에 있는 App 클래스가 다음 메서드를 호출할 수 있도록 공개한다.
   public static void list() {
     System.out.println("[프로젝트 목록]");
     for (int i = 0; i < size; i++) {

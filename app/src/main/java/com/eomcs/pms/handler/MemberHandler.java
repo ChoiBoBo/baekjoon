@@ -1,5 +1,5 @@
 package com.eomcs.pms.handler;
-
+//1
 import java.sql.Date;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
@@ -12,6 +12,7 @@ public class MemberHandler {
   static Member[] members = new Member[MAX_LENGTH];
   static int size = 0;
 
+  // 다른 패키지에 있는 App 클래스가 다음 메서드를 호출할 수 있도록 공개한다.
   public static void add() {
     System.out.println("[회원 등록]");
 
@@ -30,6 +31,7 @@ public class MemberHandler {
     members[size++] = member;
   }
 
+  //다른 패키지에 있는 App 클래스가 다음 메서드를 호출할 수 있도록 공개한다.
   public static void list() {
     System.out.println("[회원 목록]");
     for (int i = 0; i < size; i++) {
