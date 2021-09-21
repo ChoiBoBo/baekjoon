@@ -24,7 +24,12 @@ public class TaskHandler {
     System.out.println("1: 진행중");
     System.out.println("2: 완료");
     task.status = Prompt.inputInt("> ");
-    task.owner = Prompt.inputString("담당자? ");
+
+    while(true) {
+      task.owner = Prompt.inputString("담당자? ");
+
+    }
+
 
     tasks[size++] = task;
   }

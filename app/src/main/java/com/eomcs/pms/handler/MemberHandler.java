@@ -1,5 +1,5 @@
 package com.eomcs.pms.handler;
-//1
+
 import java.sql.Date;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
@@ -42,6 +42,13 @@ public class MemberHandler {
           members[i].tel, 
           members[i].registeredDate);
     }
-
+  }
+  static boolean exist(String name) {
+    for(int i = 0; i < size; i++) {
+      if(members[i].name.equals(name)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
