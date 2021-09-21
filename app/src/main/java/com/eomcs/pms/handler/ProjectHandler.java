@@ -21,10 +21,8 @@ public class ProjectHandler {
     project.startDate = Prompt.inputDate("시작일? ");
     project.endDate = Prompt.inputDate("종료일? ");
 
-
     while(true) {
-
-      String owner = Prompt.inputString("만든이?(취소: 빈 문자열) ");
+      String owner = Prompt.inputString("만든이?(취소 : 빈 문자열) ");
       if(MemberHandler.exist(owner)) {
         project.owner = owner;
         break;
@@ -36,26 +34,28 @@ public class ProjectHandler {
     }
 
     String members = "";
-
     while(true) {
-
-      String member = Prompt.inputString("팀원? ");
+      String member = Prompt.inputString("팀원?(완료: 빈 문자열)");
       if(MemberHandler.exist(member)) {
-        members += "," + member;
+        if(members.length() > 0) {
+          members += ",";
+        }
+        members += member;
         continue;
-
       } else if(member.length() == 0) {
+        break;
       }
-      project.members = members;
-      projects[size++] = project;
+      System.out.println("등록된 회원이 아닙니다.ㄴ");
     }
+    project.members = members;
+    projects[size++] = project;
   }
 
   //다른 패키지에 있는 App 클래스가 다음 메서드를 호출할 수 있도록 공개한다.
   public static void list() {
     System.out.println("[프로젝트 목록]");
     for (int i = 0; i < size; i++) {
-      System.out.printf("%d, %s, %s, %s, %s\n",
+      System.out.printf("%d, %s, %s, %s, %s, [%s]\n",
           projects[i].no, 
           projects[i].title, 
           projects[i].startDate, 

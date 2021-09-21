@@ -26,10 +26,17 @@ public class TaskHandler {
     task.status = Prompt.inputInt("> ");
 
     while(true) {
-      task.owner = Prompt.inputString("담당자? ");
 
+      String owner = Prompt.inputString("담당자?(취소 : 빈 문자열) ");
+      if(owner.length() == 0) {
+        System.out.println("작업 등록을 취소합니다.");
+        return;
+      }else if(MemberHandler.exist(owner)) {
+        task.owner = owner;
+        break;
+      }
+      System.out.println("등록된 회원이 아닙니다.");
     }
-
 
     tasks[size++] = task;
   }
