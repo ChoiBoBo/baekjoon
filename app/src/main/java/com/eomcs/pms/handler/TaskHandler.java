@@ -25,9 +25,10 @@ public class TaskHandler {
     System.out.println("2: 완료");
     task.status = Prompt.inputInt("> ");
 
+
     while(true) {
 
-      String owner = Prompt.inputString("담당자?(취소 : 빈 문자열) ");
+      String owner = Prompt.inputString("담당자?(취소: 빈 문자열) ");
       if(owner.length() == 0) {
         System.out.println("작업 등록을 취소합니다.");
         return;

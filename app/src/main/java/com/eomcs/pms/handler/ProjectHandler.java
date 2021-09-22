@@ -22,7 +22,7 @@ public class ProjectHandler {
     project.endDate = Prompt.inputDate("종료일? ");
 
     while(true) {
-      String owner = Prompt.inputString("만든이?(취소 : 빈 문자열) ");
+      String owner = Prompt.inputString("만든이?(취소: 빈 문자열) ");
       if(MemberHandler.exist(owner)) {
         project.owner = owner;
         break;
@@ -33,9 +33,11 @@ public class ProjectHandler {
       System.out.println("등록된 회원이 아닙니다.");
     }
 
+
     String members = "";
     while(true) {
-      String member = Prompt.inputString("팀원?(완료: 빈 문자열)");
+
+      String member = Prompt.inputString("팀원? ");
       if(MemberHandler.exist(member)) {
         if(members.length() > 0) {
           members += ",";
@@ -45,9 +47,9 @@ public class ProjectHandler {
       } else if(member.length() == 0) {
         break;
       }
-      System.out.println("등록된 회원이 아닙니다.ㄴ");
+      System.out.println("등록된 회원이 아닙니다.");
     }
-    project.members = members;
+
     projects[size++] = project;
   }
 
