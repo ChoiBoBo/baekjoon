@@ -21,34 +21,33 @@ public class ProjectHandler {
     project.startDate = Prompt.inputDate("시작일? ");
     project.endDate = Prompt.inputDate("종료일? ");
 
-    while(true) {
+    while (true) {
       String owner = Prompt.inputString("만든이?(취소: 빈 문자열) ");
-      if(MemberHandler.exist(owner)) {
+      if (MemberHandler.exist(owner)) {
         project.owner = owner;
         break;
-      } else if(owner.length() == 0) {
+      } else if (owner.length() == 0) {
         System.out.println("프로젝트 등록을 취소합니다.");
-        return;
+        return; // 메서드 실행을 즉시 종료!
       }
       System.out.println("등록된 회원이 아닙니다.");
     }
 
-
     String members = "";
-    while(true) {
-
-      String member = Prompt.inputString("팀원? ");
-      if(MemberHandler.exist(member)) {
-        if(members.length() > 0) {
+    while (true) {
+      String member = Prompt.inputString("팀원?(완료: 빈 문자열) ");
+      if (MemberHandler.exist(member)) {
+        if (members.length() > 0) {
           members += ",";
         }
         members += member;
         continue;
-      } else if(member.length() == 0) {
+      } else if (member.length() == 0) {
         break;
-      }
+      } 
       System.out.println("등록된 회원이 아닙니다.");
     }
+    project.members = members;
 
     projects[size++] = project;
   }
@@ -66,4 +65,6 @@ public class ProjectHandler {
           projects[i].members);
     }
   }
+
+
 }
