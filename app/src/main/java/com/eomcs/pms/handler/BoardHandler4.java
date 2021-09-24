@@ -4,7 +4,7 @@ import java.sql.Date;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
 
-public class BoardHandler {
+public class BoardHandler4 {
 
   static final int MAX_LENGTH = 5;
 
@@ -12,7 +12,7 @@ public class BoardHandler {
   static int size = 0;
 
   public static void add() {
-    System.out.println("[새 게시글]");
+    System.out.println("[새 게시글4]");
 
     Board board = new Board();
 
@@ -26,7 +26,7 @@ public class BoardHandler {
   }
 
   public static void list() {
-    System.out.println("[게스글 목록]");
+    System.out.println("[게스글 목록4]");
     for(int i = 0; i < size; i++) {
       System.out.printf("%d, %s, %s, %s, %d\n",
           boards[i].no,
@@ -35,7 +35,6 @@ public class BoardHandler {
           boards[i].registeredDate,
           boards[i].viewCount,
           boards[i].like);
-
     }
   }
 }
