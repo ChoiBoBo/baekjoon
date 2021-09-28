@@ -10,5 +10,4 @@ public class Board {
   public Date registeredDate;
   public int viewCount;
   public int like;
-
 }
