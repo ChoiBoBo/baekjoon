@@ -4,7 +4,7 @@ import java.sql.Date;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
 
-public class BoardHandler {
+public class BoardHandler_test {
 
   // 모든 게시판의 최대 배열 개수가 같기 때문에 다음 변수는 
   // 그냥 static 필드로 남겨둔다.
@@ -30,9 +30,6 @@ public class BoardHandler {
     this.boards[this.size++] = board;
   }
 
-  // BoardHandler 설계도에 따라 만든 변수(boards, size)를 다룰 수 있도록 
-  // 파라미터로 인스턴스 주소를 받는다.
-  // 
   public void list() {
     System.out.println("[게시글 목록]");
     for (int i = 0; i < this.size; i++) {
