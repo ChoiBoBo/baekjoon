@@ -30,9 +30,6 @@ public class BoardHandler {
     this.boards[this.size++] = board;
   }
 
-  // BoardHandler 설계도에 따라 만든 변수(boards, size)를 다룰 수 있도록 
-  // 파라미터로 인스턴스 주소를 받는다.
-  // 
   public void list() {
     System.out.println("[게시글 목록]");
     for (int i = 0; i < this.size; i++) {
