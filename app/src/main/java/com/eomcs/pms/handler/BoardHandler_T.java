@@ -4,7 +4,7 @@ import java.sql.Date;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
 
-public class BoardHandler {
+public class BoardHandler_T {
 
   // 모든 게시판의 최대 배열 개수가 같기 때문에 다음 변수는 
   // 그냥 static 필드로 남겨둔다.
@@ -49,14 +49,14 @@ public class BoardHandler {
 
     Board board = null;
 
-    for(int i = 0; i < this.size; i++) {
-      if(this.boards[i].no == no) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.boards[i].no == no) {
         board = this.boards[i];
         break;
       }
     }
 
-    if(board == null) {
+    if (board == null) {
       System.out.println("해당 번호의 게시글이 없습니다.");
       return;
     }
@@ -65,7 +65,7 @@ public class BoardHandler {
     System.out.printf("내용: %s\n", board.content);
     System.out.printf("작성자: %s\n", board.writer);
     System.out.printf("등록일: %s\n", board.registeredDate);
-    System.out.printf("조회수: %s\n", board.viewCount);
+    System.out.printf("조회수: %d\n", ++board.viewCount);
   }
 
   public void update() {
@@ -74,14 +74,14 @@ public class BoardHandler {
 
     Board board = null;
 
-    for(int i = 0; i < this.size; i++) {
-      if(this.boards[i].no == no) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.boards[i].no == no) {
         board = this.boards[i];
         break;
       }
     }
 
-    if(board == null) {
+    if (board == null) {
       System.out.println("해당 번호의 게시글이 없습니다.");
       return;
     }
@@ -90,7 +90,7 @@ public class BoardHandler {
     String content = Prompt.inputString(String.format("내용(%s)? ", board.content));
 
     String input = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
-    if(input.equalsIgnoreCase("n") || input.length() == 0) {
+    if (input.equalsIgnoreCase("n") || input.length() == 0) {
       System.out.println("게시글 변경을 취소하였습니다.");
       return;
     }
@@ -98,13 +98,42 @@ public class BoardHandler {
     board.title = title;
     board.content = content;
     System.out.println("게시글을 변경하였습니다.");
+  }
 
-    public void delete() {
+  public void delete() {
+    System.out.println("[게시글 삭제]");
+    int no = Prompt.inputInt("번호? ");
 
+    int boardIndex = -1;
+
+    // Board 인스턴스가 들어 있는 배열을 뒤져서
+    // 게시글 번호와 일치하는 Board 인스턴스를 찾는다. 
+    for (int i = 0; i < this.size; i++) {
+      if (this.boards[i].no == no) {
+        boardIndex = i;
+        break;
+      }
     }
 
+    if (boardIndex == -1) {
+      System.out.println("해당 번호의 게시글이 없습니다.");
+      return;
+    }
 
+    String input = Prompt.inputString("정말 삭제하시겠습니까?(y/N) ");
+    if (input.equalsIgnoreCase("n") || input.length() == 0) {
+      System.out.println("게시글 삭제를 취소하였습니다.");
+      return;
+    }
+
+    for (int i = boardIndex + 1; i < this.size; i++) {
+      this.boards[i - 1] = this.boards[i];
+    }
+    this.boards[--this.size] = null;
+
+    System.out.println("게시글을 삭제하였습니다.");
   }
+
 }
 
 
