@@ -27,6 +27,15 @@ public class App {
       } else if (input.equals("/member/list")) {
         memberHandler.list();
 
+      } else if (input.equals("/member/detail")) {
+        memberHandler.detail();
+
+      } else if (input.equals("/member/update")) {
+        memberHandler.update();
+
+      } else if (input.equals("/member/delete")) {
+        memberHandler.delete();
+
       }  else if (input.equals("/project/add")) {
         projectHandler.add(memberHandler);
 
