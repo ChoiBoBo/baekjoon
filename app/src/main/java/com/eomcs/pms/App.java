@@ -48,6 +48,12 @@ public class App {
       }  else if (input.equals("/board/detail")) {
         boardHandler.detail();
 
+      }  else if (input.equals("/board/update")) {
+        boardHandler.update();
+
+      }  else if (input.equals("/board/delete")) {
+        boardHandler.delete();
+
       } else {
         System.out.println("실행할 수 없는 명령입니다.");
       }
