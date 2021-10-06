@@ -1,4 +1,4 @@
-package com.eomcs.pms;
+package com.eomcs.pms.handler;
 
 import com.eomcs.pms.handler.BoardHandler;
 import com.eomcs.pms.handler.MemberHandler;
@@ -6,7 +6,7 @@ import com.eomcs.pms.handler.ProjectHandler;
 import com.eomcs.pms.handler.TaskHandler;
 import com.eomcs.util.Prompt;
 
-public class App_T {
+public class App {
 
   public static void main(String[] args) {
 
