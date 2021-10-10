@@ -12,8 +12,10 @@ public class App {
 
     BoardHandler boardHandler = new BoardHandler();
     MemberHandler memberHandler = new MemberHandler();
-    ProjectHandler projectHandler = new ProjectHandler();
-    TaskHandler taskHandler = new TaskHandler();
+
+    ProjectHandler projectHandler = new ProjectHandler(memberHandler);
+
+    TaskHandler taskHandler = new TaskHandler(memberHandler);
 
     while (true) {
       String input = Prompt.inputString("명령> ");
@@ -37,6 +39,9 @@ public class App {
         memberHandler.delete();
 
       }  else if (input.equals("/project/add")) {
+        // add() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        projectHandler.add(memberHandler); // 이전 코드 
         projectHandler.add();
 
       }  else if (input.equals("/project/list")) {
@@ -46,12 +51,18 @@ public class App {
         projectHandler.detail();
 
       }  else if (input.equals("/project/update")) {
+        // update() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        projectHandler.update(memberHandler); // 이전 코드
         projectHandler.update();
 
       }  else if (input.equals("/project/delete")) {
         projectHandler.delete();
 
       }  else if (input.equals("/task/add")) {
+        // add() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        taskHandler.add(memberHandler); // 이전 코드
         taskHandler.add();
 
       }  else if (input.equals("/task/list")) {
@@ -61,6 +72,9 @@ public class App {
         taskHandler.detail();
 
       }  else if (input.equals("/task/update")) {
+        // update() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        taskHandler.update(memberHandler); // 이전 코드
         taskHandler.update();
 
       }  else if (input.equals("/task/delete")) {

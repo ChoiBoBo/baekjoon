@@ -13,6 +13,11 @@ public class ProjectHandler {
 
   public MemberHandler memberHandler;
 
+
+  public ProjectHandler(MemberHandler memberHandler) {
+    this.memberHandler = memberHandler;
+  }
+
   public void add() {
     System.out.println("[프로젝트 등록]");
 
@@ -156,7 +161,10 @@ public class ProjectHandler {
   private String promptOwner(String label) {
     while (true) {
       String owner = Prompt.inputString(label);
-      if (memberHandler.exist(owner)) {
+      // 회원 이름이 등록된 회원의 이름인지 검사할 때 사용할 MemberHandler 인스턴스는
+      // 인스턴스 변수에 미리 주입되어 있기 때문에 파라미터로 받을 필요가 없다.
+      // 다음과 같이 인스턴스 변수를 직접 사용하면 된다.
+      if (this.memberHandler.exist(owner)) {
         return owner;
       } else if (owner.length() == 0) {
         return null;
@@ -169,7 +177,7 @@ public class ProjectHandler {
     String members = "";
     while (true) {
       String member = Prompt.inputString(label);
-      if (memberHandler.exist(member)) {
+      if (this.memberHandler.exist(member)) {
         if (members.length() > 0) {
           members += ",";
         }
