@@ -92,7 +92,6 @@ public class BoardHandler {
 
     int index = indexOf(no);
 
-
     if (index == -1) {
       System.out.println("해당 번호의 게시글이 없습니다.");
       return;
@@ -113,8 +112,8 @@ public class BoardHandler {
   }
 
   private Board findByNo(int no) {
-    for(int i = 0; i < this.size; i++) {
-      if(this.boards[i].no == no) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.boards[i].no == no) {
         return this.boards[i];
       }
     }
@@ -129,6 +128,8 @@ public class BoardHandler {
     }
     return -1;
   }
+
+
 }
 
 

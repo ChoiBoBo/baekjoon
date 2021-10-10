@@ -1,4 +1,4 @@
-package com.eomcs.pms.handler;
+package com.eomcs.pms;
 
 import com.eomcs.pms.handler.BoardHandler;
 import com.eomcs.pms.handler.MemberHandler;
@@ -6,14 +6,24 @@ import com.eomcs.pms.handler.ProjectHandler;
 import com.eomcs.pms.handler.TaskHandler;
 import com.eomcs.util.Prompt;
 
-public class App {
+public class App_T {
 
   public static void main(String[] args) {
 
     BoardHandler boardHandler = new BoardHandler();
     MemberHandler memberHandler = new MemberHandler();
+
     ProjectHandler projectHandler = new ProjectHandler();
+    // ProjectHandler의 메서드가 사용할 의존 객체는
+    // 메서드를 호출할 때 마다 파라미터로 전달하는 것이 아니라, 
+    // 다음과 같이 인스턴스 변수에 미리 주입한다.
+    projectHandler.memberHandler = memberHandler;
+
     TaskHandler taskHandler = new TaskHandler();
+    // TaskHandler의 메서드가 사용할 의존 객체는
+    // 메서드를 호출할 때 마다 파라미터로 전달하는 것이 아니라, 
+    // 다음과 같이 인스턴스 변수에 미리 주입한다.
+    taskHandler.memberHandler = memberHandler;
 
     while (true) {
       String input = Prompt.inputString("명령> ");
@@ -37,7 +47,10 @@ public class App {
         memberHandler.delete();
 
       }  else if (input.equals("/project/add")) {
-        projectHandler.add(memberHandler);
+        // add() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        projectHandler.add(memberHandler); // 이전 코드 
+        projectHandler.add();
 
       }  else if (input.equals("/project/list")) {
         projectHandler.list();
@@ -46,13 +59,19 @@ public class App {
         projectHandler.detail();
 
       }  else if (input.equals("/project/update")) {
-        projectHandler.update(memberHandler);
+        // update() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        projectHandler.update(memberHandler); // 이전 코드
+        projectHandler.update();
 
       }  else if (input.equals("/project/delete")) {
         projectHandler.delete();
 
       }  else if (input.equals("/task/add")) {
-        taskHandler.add(memberHandler);
+        // add() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        taskHandler.add(memberHandler); // 이전 코드
+        taskHandler.add();
 
       }  else if (input.equals("/task/list")) {
         taskHandler.list();
@@ -61,7 +80,10 @@ public class App {
         taskHandler.detail();
 
       }  else if (input.equals("/task/update")) {
-        taskHandler.update(memberHandler);
+        // update() 메서드가 사용할 의존 객체를 미리 주입했기 때문에
+        // 이제 파라미터로 전달할 필요가 없다.
+        //        taskHandler.update(memberHandler); // 이전 코드
+        taskHandler.update();
 
       }  else if (input.equals("/task/delete")) {
         taskHandler.delete();
