@@ -106,6 +106,7 @@ public class App {
       continue;
     }
 
+    // app 04 할 차례
     if (input.equals("exit") || input.equals("quit")) {
       System.out.println("안녕!");
       break;

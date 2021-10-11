@@ -6,8 +6,13 @@ import com.eomcs.pms.handler.ProjectHandler;
 import com.eomcs.pms.handler.TaskHandler;
 import com.eomcs.util.Prompt;
 
-// 1) 메인 메뉴를 출력하고 번호를 입력 받는다.
+// 1) 메인 메뉴를 출력하고 번호를 입력 받는다.(App.java.01)
 //    - 0 번을 입력하면 프로그램을 종료한다.
+// 2) 게시판 메뉴를 출력하고 번호를 입력 받는다.
+//    - 사용자가 입력한 메뉴 번호에 따라 실행할 명령어를 설정한다.
+// 3) 회원/프로젝트/작업 메뉴를 출력하고 번호를 입력 받는다.
+//    - 사용자가 입력한 메뉴 번호에 따라 실행할 명령어를 설정한다.
+//
 public class App_T {
 
   public static void main(String[] args) {
@@ -17,7 +22,7 @@ public class App_T {
     ProjectHandler projectHandler = new ProjectHandler(memberHandler);
     TaskHandler taskHandler = new TaskHandler(memberHandler);
 
-    while (true) {
+    MAIN_LOOP: while (true) {
 
       String input = null;
 
@@ -33,6 +38,99 @@ public class App_T {
       // 제시된 메뉴의 번호를 선택하면 실행할 명령어를 변수에 설정한다.
       if (menuNo == 0) {
         input = "quit";
+
+      } else if (menuNo == 1) {
+        LOOP: while (true) {
+          System.out.println("[메인/게시판]");
+          System.out.println("1. 등록");
+          System.out.println("2. 목록");
+          System.out.println("3. 상세보기");
+          System.out.println("4. 변경");
+          System.out.println("5. 삭제");
+          System.out.println("0. 이전메뉴");
+
+          menuNo = Prompt.inputInt("게시판> ");
+          switch (menuNo) {
+            case 1: input = "/board/add"; break LOOP;
+            case 2: input = "/board/list"; break LOOP;
+            case 3: input = "/board/detail"; break LOOP;
+            case 4: input = "/board/update"; break LOOP;
+            case 5: input = "/board/delete"; break LOOP;
+            case 0: continue MAIN_LOOP;
+            default:
+              System.out.println("무효한 메뉴 번호입니다.");
+          }
+          System.out.println();
+        }
+      } else if (menuNo == 2) {
+        LOOP: while (true) {
+          System.out.println("[메인/회원]");
+          System.out.println("1. 등록");
+          System.out.println("2. 목록");
+          System.out.println("3. 상세보기");
+          System.out.println("4. 변경");
+          System.out.println("5. 삭제");
+          System.out.println("0. 이전메뉴");
+
+          menuNo = Prompt.inputInt("회원> ");
+          switch (menuNo) {
+            case 1: input = "/member/add"; break LOOP;
+            case 2: input = "/member/list"; break LOOP;
+            case 3: input = "/member/detail"; break LOOP;
+            case 4: input = "/member/update"; break LOOP;
+            case 5: input = "/member/delete"; break LOOP;
+            case 0: continue MAIN_LOOP;
+            default:
+              System.out.println("무효한 메뉴 번호입니다.");
+          }
+          System.out.println();
+        } 
+      } else if (menuNo == 3) {
+        LOOP: while (true) {
+          System.out.println("[메인/프로젝트]");
+          System.out.println("1. 등록");
+          System.out.println("2. 목록");
+          System.out.println("3. 상세보기");
+          System.out.println("4. 변경");
+          System.out.println("5. 삭제");
+          System.out.println("0. 이전메뉴");
+
+          menuNo = Prompt.inputInt("프로젝트> ");
+          switch (menuNo) {
+            case 1: input = "/project/add"; break LOOP;
+            case 2: input = "/project/list"; break LOOP;
+            case 3: input = "/project/detail"; break LOOP;
+            case 4: input = "/project/update"; break LOOP;
+            case 5: input = "/project/delete"; break LOOP;
+            case 0: continue MAIN_LOOP;
+            default:
+              System.out.println("무효한 메뉴 번호입니다.");
+          }
+          System.out.println();
+        }
+      } else if (menuNo == 4) {
+        LOOP: while (true) {
+          System.out.println("[메인/작업]");
+          System.out.println("1. 등록");
+          System.out.println("2. 목록");
+          System.out.println("3. 상세보기");
+          System.out.println("4. 변경");
+          System.out.println("5. 삭제");
+          System.out.println("0. 이전메뉴");
+
+          menuNo = Prompt.inputInt("작업> ");
+          switch (menuNo) {
+            case 1: input = "/task/add"; break LOOP;
+            case 2: input = "/task/list"; break LOOP;
+            case 3: input = "/task/detail"; break LOOP;
+            case 4: input = "/task/update"; break LOOP;
+            case 5: input = "/task/delete"; break LOOP;
+            case 0: continue MAIN_LOOP;
+            default:
+              System.out.println("무효한 메뉴 번호입니다.");
+          }
+          System.out.println();
+        }
       } else {
         continue; // 옳지 않은 번호를 입력한 경우에는 다시 메뉴를 출력한다.
       }
