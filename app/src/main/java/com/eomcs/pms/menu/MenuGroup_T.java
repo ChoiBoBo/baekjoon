@@ -5,7 +5,7 @@ import com.eomcs.util.Prompt;
 // 역할
 // - 다른 메뉴를 포함하는 컨테이너 역할을 수행한다.
 // 
-public class MenuGroup_T extends Menu_T {
+public class MenuGroup_T extends Menu {
 
   Menu[] childs = new Menu[100];
   int size;

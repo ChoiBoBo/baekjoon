@@ -11,7 +11,7 @@ public abstract class Menu_T {
   // 기본 생성자를 정의하지 않는다.
   // 대신 인스턴스를 만들 때 반드시 메뉴 이름을 입력하도록 강요하기 위해
   // 다음과 같이 String 을 파라미터로 받는 생성자를 정의한다.
-  public Menu(String title) {
+  public Menu_T(String title) {
     this.title = title;
   }
 
