@@ -4,6 +4,7 @@ import com.eomcs.pms.handler.BoardHandler;
 import com.eomcs.pms.handler.MemberHandler;
 import com.eomcs.pms.handler.ProjectHandler;
 import com.eomcs.pms.handler.TaskHandler;
+import com.eomcs.pms.menu.Menu;
 import com.eomcs.util.Prompt;
 
 // 1) 메인 메뉴를 출력하고 번호를 입력 받는다.(App.java.01)
@@ -29,7 +30,16 @@ public class App {
   static ProjectHandler projectHandler = new ProjectHandler(memberHandler);
   static TaskHandler taskHandler = new TaskHandler(memberHandler);
 
+
+
   public static void main(String[] args) {
+
+    Menu mainMenu = createMenu();
+    mainMenu.execute();
+
+    Prompt.close();
+
+
     while (true) {
       int menuNo = doMainMenu();
 
@@ -50,6 +60,10 @@ public class App {
     }
 
     Prompt.close();
+  }
+
+  static Menu createMenu() {
+    MenuGroup mainMEnuGroup new MenuGroup("메인");
   }
 
   static void doBoardMenu() {
