@@ -22,6 +22,8 @@ public class App {
 
     Prompt.close();
   }
+  // 12
+
 
   static Menu createMenu() {
     MenuGroup mainMenuGroup = new MenuGroup("메인");
