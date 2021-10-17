@@ -4,7 +4,7 @@ import java.sql.Date;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
 
-public class MemberHandler {
+public class MemberHandler_T {
 
   static final int MAX_LENGTH = 5;
 
@@ -24,10 +24,9 @@ public class MemberHandler {
     member.tel = Prompt.inputString("전화? ");
     member.registeredDate = new Date(System.currentTimeMillis());
 
-
-    if(this.size == this.members.length) {
+    if (this.size == this.members.length) {
       Member[] arr = new Member[this.members.length + (this.members.length >> 1)];
-      for(int i = 0; i < this.size; i++) {
+      for (int i = 0; i < this.size; i++) {
         arr[i] = this.members[i];
       }
       this.members = arr;

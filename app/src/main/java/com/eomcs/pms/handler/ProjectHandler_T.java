@@ -4,7 +4,7 @@ import java.sql.Date;
 import com.eomcs.pms.domain.Project;
 import com.eomcs.util.Prompt;
 
-public class ProjectHandler {
+public class ProjectHandler_T {
 
   static final int MAX_LENGTH = 5;
 
@@ -12,7 +12,7 @@ public class ProjectHandler {
   int size = 0;
   MemberHandler memberHandler;
 
-  public ProjectHandler(MemberHandler memberHandler) {
+  public ProjectHandler_T (MemberHandler memberHandler) {
     this.memberHandler = memberHandler;
   }
 
@@ -35,9 +35,9 @@ public class ProjectHandler {
 
     project.members = promptMembers("팀원?(완료: 빈 문자열) ");
 
-    if(size == projects.length) {
-      Project[] arr = new Project[projects.length + (projects.length) >> 1];
-      for(int i = 0; i < size; i++) {
+    if (size == projects.length) {
+      Project[] arr = new Project[projects.length + (projects.length >> 1)];
+      for (int i = 0; i < size; i++) {
         arr[i] = projects[i];
       }
       projects = arr;

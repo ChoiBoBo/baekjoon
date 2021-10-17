@@ -8,7 +8,7 @@ import com.eomcs.pms.menu.Menu;
 import com.eomcs.pms.menu.MenuGroup;
 import com.eomcs.util.Prompt;
 
-public class App {
+public class App_T {
 
   BoardHandler boardHandler = new BoardHandler();
   MemberHandler memberHandler = new MemberHandler();

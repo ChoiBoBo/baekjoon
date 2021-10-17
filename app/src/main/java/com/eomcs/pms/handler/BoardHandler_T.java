@@ -4,7 +4,7 @@ import java.sql.Date;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
 
-public class BoardHandler {
+public class BoardHandler_T {
 
   static final int MAX_LENGTH = 5;
 
@@ -22,13 +22,17 @@ public class BoardHandler {
     board.writer = Prompt.inputString("작성자? ");
     board.registeredDate = new Date(System.currentTimeMillis());
 
-    if(this.size == this.boards.length) {
+    if (this.size == this.boards.length) {
+      // 기존 배열 보다 50% 더 큰 배열을 만든다.
       Board[] arr = new Board[this.boards.length + (this.boards.length >> 1)];
 
-      for(int i = 0; i < this.size; i++) {
+      // 기존 배열의 값을 새 배열로 복사한다.
+      for (int i = 0; i < this.size; i++) {
         arr[i] = this.boards[i];
       }
 
+      // 기존 배열 대신 새 배열 주소를 저장한다.
+      // => 물론 이렇게 함으로써 기존 배열은 가비지가 될 것이다.
       this.boards = arr;
       System.out.println("새 Board[] 객체를 만듦!");
     }
