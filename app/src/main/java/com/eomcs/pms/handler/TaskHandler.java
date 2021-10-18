@@ -16,6 +16,7 @@ public class TaskHandler {
     this.memberHandler = memberHandler;
   }
 
+
   public void add() {
     System.out.println("[작업 등록]");
 
@@ -31,9 +32,9 @@ public class TaskHandler {
       return; 
     }
 
-    if(size == tasks.length) {
-      Task[] arr= new Task[tasks.length + (tasks.length >> 1)];
-      for(int i = 0; i < size; i++) {
+    if (size == tasks.length) {
+      Task[] arr = new Task[tasks.length + (tasks.length >> 1)];
+      for (int i = 0; i < size; i++) {
         arr[i] = tasks[i];
       }
       tasks = arr;
@@ -41,7 +42,6 @@ public class TaskHandler {
     this.tasks[this.size++] = task;
   }
 
-  //다른 패키지에 있는 App 클래스가 다음 메서드를 호출할 수 있도록 공개한다.
   public void list() {
     System.out.println("[작업 목록]");
 

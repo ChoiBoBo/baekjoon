@@ -6,9 +6,18 @@ import com.eomcs.util.Prompt;
 
 public class BoardHandler {
 
-  static final int MAX_LENGTH = 5;
 
-  Board[] boards = new Board[MAX_LENGTH];
+  static class Node {
+    Board board;
+    Node next;
+
+    public Node(Board board) {
+      this.board = board;
+    }
+  }
+
+  Node head;
+  Node tail;
   int size = 0;
 
   public void add() {
@@ -22,30 +31,37 @@ public class BoardHandler {
     board.writer = Prompt.inputString("작성자? ");
     board.registeredDate = new Date(System.currentTimeMillis());
 
-    if(this.size == this.boards.length) {
-      Board[] arr = new Board[this.boards.length + (this.boards.length >> 1)];
+    Node node = new Node(board);
 
-      for(int i = 0; i < this.size; i++) {
-        arr[i] = this.boards[i];
-      }
+    if(head == null) {
+      tail = head = node;
+    } else {
+      tail.next = node;
 
-      this.boards = arr;
-      System.out.println("새 Board[] 객체를 만듦!");
+      tail = node;
     }
-    this.boards[this.size++] = board;
+    size++;
   }
 
   public void list() {
     System.out.println("[게시글 목록]");
-    for (int i = 0; i < this.size; i++) {
-      System.out.printf("%d, %s, %s, %s, %d, %d\n", 
-          this.boards[i].no, 
-          this.boards[i].title, 
-          this.boards[i].writer,
-          this.boards[i].registeredDate,
-          this.boards[i].viewCount, 
-          this.boards[i].like);
+
+    if(head == null) {
+      return;
     }
+
+    Node node = head;
+
+    do {
+      System.out.printf("%d, %s, %s, %s, %d, %d\n",
+          node.board.no,
+          node.board.title,
+          node.board.writer,
+          node.board.registeredDate,
+          node.board.viewCount,
+          node.board.like);
+      node = node.next;
+    } while(node != null);
   }
 
   public void detail() {
@@ -108,33 +124,48 @@ public class BoardHandler {
       return;
     }
 
-    for (int i = index + 1; i < this.size; i++) {
-      this.boards[i - 1] = this.boards[i];
+    Node node = head;
+    Node prev = null;
+
+    while(node != null) {
+      if(node.board == board) {
+        if(node == head) {
+          head = node.next;
+        } else {
+          prev.next = node.next;
+        }
+
+        node.next = null;
+
+        if(node == tail) {
+          tail = prev;
+        }
+
+        break;
+      }
+
+      prev = node;
+      node = node.next; 
     }
-    this.boards[--this.size] = null;
+
+    size--;
 
     System.out.println("게시글을 삭제하였습니다.");
   }
 
   private Board findByNo(int no) {
-    for (int i = 0; i < this.size; i++) {
-      if (this.boards[i].no == no) {
-        return this.boards[i];
+
+    Node node = head;
+
+    while(node != null) {
+      if(node.board.no == no) {
+        return node.board;
       }
+      node = node.next;
     }
+
     return null;
   }
-
-  private int indexOf(int no) {
-    for (int i = 0; i < this.size; i++) {
-      if (this.boards[i].no == no) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-
 }
 
 
