@@ -6,22 +6,26 @@ import com.eomcs.util.Prompt;
 
 public class ProjectHandler {
 
-  static class Node {
-    Project project;
-    Node next;
+  static final int MAX_LENGTH = 5;
 
-    public Node(Project project) {
-      this.project = project;
-    }
-  }
-
-  Node node;
-  Node tail;
+  Project[] projects = new Project[MAX_LENGTH];
   int size = 0;
 
+  // 이제 의존 객체는 생성자를 통해 주입 받기 때문에 
+  // 외부에서 인스턴스 변수에 직접 접근할 이유가 없다.
+  // 따라서 전체 공개 모드에서 패키지 멤버에게만 공개하는 모드로 전환한다. 
   MemberHandler memberHandler;
 
-  public projectHandler(MemberHandler memberHandler) {
+  // 생성자 선언
+  // - 인스턴스를 생성할 때 반드시 호출되어야 하는 메서드이다.
+  // - 생성자는 리턴 타입이 없다.
+  // - 메서드 이름이 클래스 이름과 같아야 한다.
+  // - 인스턴스를 사용하기 전에 반드시 값을 설정해야 하는 인스턴스 변수가 있다면,
+  //   생성자의 파라미터로 선언하라.
+  // 
+  public ProjectHandler(MemberHandler memberHandler) {
+    // 생성자에 파라미터가 있으면 인스턴스를 생성할 때 반드시 그 값을 넘겨야 한다.
+    // 일종의 인스턴스 변수의 값을 설정하는 것을 강제하는 효과가 있다.
     this.memberHandler = memberHandler;
   }
 
@@ -44,33 +48,21 @@ public class ProjectHandler {
 
     project.members = promptMembers("팀원?(완료: 빈 문자열) ");
 
-    Node node  = new Node(project);
-    if(head = null) {
-      tail = head = node;
-    }else {
-      tail.next = node;
-      tail = node;
-    }
-    size++;
+    this.projects[this.size++] = project;
   }
 
   //다른 패키지에 있는 App 클래스가 다음 메서드를 호출할 수 있도록 공개한다.
   public void list() {
     System.out.println("[프로젝트 목록]");
-    if(head == null) {
-      return;
-    }
-    Node node = head;
-    do {
+    for (int i = 0; i < this.size; i++) {
       System.out.printf("%d, %s, %s, %s, %s, [%s]\n",
-          node.project.no,
-          node.project.title,
-          node.project.startDate,
-          node.project.endDate,
-          node.project.owner,
-          node.project.members);
-      node = node.next;
-    } while(node != null);
+          this.projects[i].no, 
+          this.projects[i].title, 
+          this.projects[i].startDate, 
+          this.projects[i].endDate, 
+          this.projects[i].owner,
+          this.projects[i].members);
+    }
   }
 
   public void detail() {
@@ -151,30 +143,12 @@ public class ProjectHandler {
       return;
     }
 
-    Node node = head;
-    Node prev = null;
-
-    while(node != null) {
-      if(node.project == project) {
-        if(node == head) {
-          head = node.next;
-        }else {
-          prev.next = node.next;
-        }
-        node.next = null;
-        if(node == tail) {
-          tail = prev;
-        }
-        break;
-      }
-
-      prev = node;
-      node = node.next;
+    for (int i = index + 1; i < this.size; i++) {
+      this.projects[i - 1] = this.projects[i];
     }
-    size--;
+    this.projects[--this.size] = null;
 
     System.out.println("프로젝트를 삭제하였습니다.");
-
   }
 
   private Project findByNo(int no) {

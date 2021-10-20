@@ -6,19 +6,7 @@ import com.eomcs.util.Prompt;
 
 public class BoardHandler {
 
-
-  static class Node {
-    Board board;
-    Node next;
-
-    public Node(Board board) {
-      this.board = board;
-    }
-  }
-
-  Node head;
-  Node tail;
-  int size = 0;
+  BoardList boardList = new BoardList();
 
   public void add() {
     System.out.println("[새 게시글]");
@@ -31,37 +19,25 @@ public class BoardHandler {
     board.writer = Prompt.inputString("작성자? ");
     board.registeredDate = new Date(System.currentTimeMillis());
 
-    Node node = new Node(board);
-
-    if(head == null) {
-      tail = head = node;
-    } else {
-      tail.next = node;
-
-      tail = node;
-    }
-    size++;
+    boardList.add(board);
   }
 
   public void list() {
     System.out.println("[게시글 목록]");
 
-    if(head == null) {
-      return;
+    Board[] list = boardList.toArray();
+
+    for (Board board : list) {
+      System.out.printf("%d, %s, %s, %s, %d, %d\n", 
+          board.no, 
+          board.title, 
+          board.writer,
+          board.registeredDate,
+          board.viewCount, 
+          board.like);
+
+      boardList.add(board);
     }
-
-    Node node = head;
-
-    do {
-      System.out.printf("%d, %s, %s, %s, %d, %d\n",
-          node.board.no,
-          node.board.title,
-          node.board.writer,
-          node.board.registeredDate,
-          node.board.viewCount,
-          node.board.like);
-      node = node.next;
-    } while(node != null);
   }
 
   public void detail() {
@@ -111,9 +87,9 @@ public class BoardHandler {
     System.out.println("[게시글 삭제]");
     int no = Prompt.inputInt("번호? ");
 
-    int index = indexOf(no);
+    Board board = boardList.findByNo(no);
 
-    if (index == -1) {
+    if (board == null) {
       System.out.println("해당 번호의 게시글이 없습니다.");
       return;
     }
@@ -124,48 +100,11 @@ public class BoardHandler {
       return;
     }
 
-    Node node = head;
-    Node prev = null;
-
-    while(node != null) {
-      if(node.board == board) {
-        if(node == head) {
-          head = node.next;
-        } else {
-          prev.next = node.next;
-        }
-
-        node.next = null;
-
-        if(node == tail) {
-          tail = prev;
-        }
-
-        break;
-      }
-
-      prev = node;
-      node = node.next; 
-    }
-
-    size--;
+    boardList.remove(board);
 
     System.out.println("게시글을 삭제하였습니다.");
   }
 
-  private Board findByNo(int no) {
-
-    Node node = head;
-
-    while(node != null) {
-      if(node.board.no == no) {
-        return node.board;
-      }
-      node = node.next;
-    }
-
-    return null;
-  }
 }
 
 
