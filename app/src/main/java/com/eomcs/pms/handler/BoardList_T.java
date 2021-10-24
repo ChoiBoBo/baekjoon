@@ -1,61 +1,69 @@
 package com.eomcs.pms.handler;
 
-import java.util.Arrays;
 import com.eomcs.pms.domain.Board;
 
 public class BoardList_T {
-  static final int DEFAULT_CAPACITY = 3;
 
-  Board[] boards = new Board[DEFAULT_CAPACITY];   
+  static final int MAX_LENGTH = 5;
+  Board[] boards = new Board[MAX_LENGTH];
   int size = 0;
 
-  void add(Board b) {
-    if (this.size == this.boards.length) {
-      boards = Arrays.copyOf(this.boards, this.size + (this.size >> 1));
-      System.out.printf("배열 크기 늘림: %d\n", this.boards.length);
+  public void add(Board board) {
+    if (size == boards.length) {
+      Board[] arr = new Board[boards.length + (boards.length >> 1)];
+      for (int i = 0; i < size; i++) {
+        arr[i] = boards[i];
+      }
+      boards = arr; // boards에 저장된 옛날 배열 주소를 버리고 새 배열 주소를 저장한다.
     }
-    this.boards[this.size++] = b;
+    this.boards[this.size++] = board;
   }
 
-  Board[] toArray() {
-    // 현재까지 저장된 게시글 목록을 리턴하기 위해 새 배열을 준비 한다.
-    Board[] arr = new Board[this.size];
+  public Board[] toArray() {
+    Board[] arr = new Board[this.size]; // 배열에 저장된 값을 담을 정도의 크기를 가진 새 배열을 만든다.
+    for (int i = 0; i < this.size; i++) { // 배열에 저장된 값을 새 배열에 복사한다.
+      arr[i] = boards[i];
+    }
+    return arr; // 새 배열을 리턴한다.
+  }
+
+  public Board findByNo(int no) {
     for (int i = 0; i < this.size; i++) {
-      arr[i] = this.boards[i];
+      if (boards[i].no == no) {
+        return boards[i];
+      }
     }
-    return arr;
-  }
-
-  Board get(int boardNo) {
-    // 해당 번호의 게시글을 찾는다. 
-    int index = indexOf(boardNo);
-    if (index != -1) {
-      return this.boards[index];
-    } 
     return null;
   }
 
-  void delete(int boardNo) {
-    // 해당 번호의 게시글을 찾는다. 
-    int index = indexOf(boardNo);
-
-    if (index == -1)
-      return;
-
-    // 배열에서 뒷 번호의 게시글을 한 칸씩 앞으로 당긴다. 
-    for (int x = index + 1; x < this.size; x++) {
-      this.boards[x-1] = this.boards[x];
+  public boolean remove(Board board) {
+    int index = indexOf(board);
+    if (index == -1) {
+      return false;
     }
-    this.boards[--this.size] = null; // 앞으로 당긴 후 맨 뒤의 항목은 null로 설정한다.
+
+    for (int i = index + 1; i < this.size; i++) {
+      this.boards[i - 1] = this.boards[i];
+    }
+    this.boards[--this.size] = null;
+
+    return true;
   }
 
-  int indexOf(int boardNo) {
+  private int indexOf(Board board) {
     for (int i = 0; i < this.size; i++) {
-      Board board = this.boards[i];
-      if (board.no == boardNo) {
+      if (this.boards[i] == board) {
         return i;
       }
     }
     return -1;
   }
 }
+
+
+
+
+
+
+
+

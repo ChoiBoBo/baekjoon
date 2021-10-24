@@ -1,58 +1,71 @@
 package com.eomcs.pms.handler;
 
-import java.util.Arrays;
 import com.eomcs.pms.domain.Board;
 
 public class BoardList {
-  static final int DEFAULT_CAPACITY = 3;
 
-  Board[] boards = new Board[DEFAULT_CAPACITY];   
+  static final int MAX_LENGTH = 5;
+  Board[] boards = new Board[MAX_LENGTH];
   int size = 0;
 
-  void add(Board b) {
-    if (this.size == this.boards.length) {
-      boards = Arrays.copyOf(this.boards, this.size + (this.size >> 1));
-      System.out.printf("배열 크기 늘림: %d\n", this.boards.length);
+  public void add(Board board) {
+
+    if(size == boards.length) {
+      Board[] arr = new Board[boards.length + (boards.length) >> 1];
+      for(int i = 0; i < size; i++) {
+        arr[i] = boards[i];
+      }
+      boards = arr;
     }
-    this.boards[this.size++] = b;
+    this.boards[this.size++] = board;
   }
 
-  Board[] toArray() {
-    Board[] arr = new Board[this.size];
-    for(int i = 0; i < this.size; i++) {
-      arr[i] = this.boards[i];
+
+  public Board[] toArray() {
+    Board[] arr = new Board[this.size]; // 배열에 저장된 값을 담을 정도의 크기를 가진 새 배열을 만든다.
+    for (int i = 0; i < this.size; i++) { // 배열에 저장된 값을 새 배열에 복사한다.
+      arr[i] = boards[i];
     }
-    return arr;
+    return arr; // 새 배열을 리턴한다.
   }
 
-  Board get(int boardNo) {
-    int index = indexOf(boardNo); 
-    if(index != -1) {
-      return this.boards[index];
+  public Board findByNo(int no) {
+    for (int i = 0; i < this.size; i++) {
+      if (boards[i].no == no) {
+        return boards[i];
+      }
     }
     return null;
   }
 
-  void delete(int boardNo) {
-    int index = indexOf(boardNo);
-
-    if(index == -1) {
-      return;
-
-      for(int x = index + 1; x < this.size; x++) {
-        this.boards[x-1] = this.boards[x];
-      }
-      this.boards[--this.size] = null;
+  public boolean remove(Board board) {
+    int index = indexOf(board);
+    if (index == -1) {
+      return false;
     }
 
-    int indexOf(int boardNo) {
-      for(int i = 0; i < this.size; i++) {
-        Board board = this.boards[i];
-        if(board.no == boardNo) {
-          return i;
-        }
-      }
-
-      return -1;
+    for (int i = index + 1; i < this.size; i++) {
+      this.boards[i - 1] = this.boards[i];
     }
+    this.boards[--this.size] = null;
+
+    return true;
   }
+
+  private int indexOf(Board board) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.boards[i] == board) {
+        return i;
+      }
+    }
+    return -1;
+  }
+}
+
+
+
+
+
+
+
+
