@@ -1,15 +1,15 @@
 package com.eomcs.pms.handler;
 
-import com.eomcs.pms.domain.Board;
+import com.eomcs.pms.domain.Project;
 
-public class BoardList2_T {
+public class ProjectList2_T {
 
   static class Node {
-    Board board;
+    Project project;
     Node next;
 
-    public Node(Board board) {
-      this.board = board;
+    public Node(Project project) {
+      this.project = project;
     }
   }
 
@@ -17,9 +17,9 @@ public class BoardList2_T {
   Node tail;
   int size = 0;
 
-  public void add(Board board) {
-    // 새 노드를 만든다. 생성자를 호출할 때, 노드에 담을 Board 객체 주소를 넘긴다. 
-    Node node = new Node(board);
+  public void add(Project project) {
+    // 새 노드를 만든다. 생성자를 호출할 때, 노드에 담을 Project 객체 주소를 넘긴다. 
+    Node node = new Node(project);
 
     if (head == null) {
       tail = head = node;
@@ -34,37 +34,37 @@ public class BoardList2_T {
     size++;
   }
 
-  public Board[] toArray() {
+  public Project[] toArray() {
     // 배열에 저장된 값을 담을 정도의 크기를 가진 새 배열을 만든다.
-    Board[] arr = new Board[this.size]; 
+    Project[] arr = new Project[this.size]; 
 
     Node node = head;
 
     for (int i = 0; i < this.size; i++) {
-      arr[i] = node.board;
+      arr[i] = node.project;
       node = node.next;
     }
 
     return arr; // 새 배열을 리턴한다.
   }
 
-  public Board findByNo(int no) {
+  public Project findByNo(int no) {
     Node node = head;
     while (node != null) {
-      if (node.board.no == no) {
-        return node.board;
+      if (node.project.no == no) {
+        return node.project;
       }
       node = node.next;
     }
     return null;
   }
 
-  public boolean remove(Board board) {
+  public boolean remove(Project project) {
     Node node = head;
     Node prev = null;
 
     while (node != null) {
-      if (node.board == board) { // 노드에 들어 있는 객체와 같다면
+      if (node.project == project) { // 노드에 들어 있는 객체와 같다면
         if (node == head) { // 삭제할 노드가 하필이면 첫 번째 노드라면, 
           head = node.next; // head가 두 번째 노드를 가리키게 한다.
         } else { // 삭제할 노드가 첫 번째 노드가 아니라면
