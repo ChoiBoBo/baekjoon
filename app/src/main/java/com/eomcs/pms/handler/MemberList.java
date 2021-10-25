@@ -9,17 +9,15 @@ public class MemberList {
   int size = 0;
 
   public void add(Member member) {
-
-    if(size == members.length) {
-      Member[] arr= new Member[members.length + (members.length >> 1)];
-      for(int i = 0; i < size; i++) {
+    if (size == members.length) {
+      Member[] arr = new Member[members.length + (members.length >> 1)];
+      for (int i = 0; i < size; i++) {
         arr[i] = members[i];
       }
-      members = arr;
+      members = arr; // members에 저장된 옛날 배열 주소를 버리고 새 배열 주소를 저장한다.
     }
     this.members[this.size++] = member;
   }
-
 
   public Member[] toArray() {
     Member[] arr = new Member[this.size]; // 배열에 저장된 값을 담을 정도의 크기를 가진 새 배열을 만든다.

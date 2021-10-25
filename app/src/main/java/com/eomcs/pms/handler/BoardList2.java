@@ -2,29 +2,45 @@ package com.eomcs.pms.handler;
 
 import com.eomcs.pms.domain.Board;
 
-public class BoardList_T {
+public class BoardList2 {
 
-  static final int MAX_LENGTH = 5;
-  Board[] boards = new Board[MAX_LENGTH];
+  static class Node() {
+    Board board;
+    Node next;
+
+    public Node(Board board) {
+      this.board = board;
+    }
+  }
+
+  Node head;
+  Node tail;
   int size = 0;
 
   public void add(Board board) {
-    if (size == boards.length) {
-      Board[] arr = new Board[boards.length + (boards.length >> 1)];
-      for (int i = 0; i < size; i++) {
-        arr[i] = boards[i];
-      }
-      boards = arr; // boards에 저장된 옛날 배열 주소를 버리고 새 배열 주소를 저장한다.
+
+    Node node = new Node(board);
+
+    if(head == null) {
+      tail = head = node;
+    } else {
+      tail.next = node;
+
+      tail = node;
     }
-    this.boards[this.size++] = board;
+    size++;
   }
 
   public Board[] toArray() {
-    Board[] arr = new Board[this.size]; // 배열에 저장된 값을 담을 정도의 크기를 가진 새 배열을 만든다.
-    for (int i = 0; i < this.size; i++) { // 배열에 저장된 값을 새 배열에 복사한다.
-      arr[i] = boards[i];
+
+    if(head == null) {
+      tail = head = node;
+    } else {
+      tail.next = node;
+
+      tail = node;
     }
-    return arr; // 새 배열을 리턴한다.
+    size++;
   }
 
   public Board findByNo(int no) {
