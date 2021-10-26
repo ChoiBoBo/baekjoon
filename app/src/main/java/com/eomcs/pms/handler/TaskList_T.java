@@ -2,7 +2,7 @@ package com.eomcs.pms.handler;
 
 import com.eomcs.pms.domain.Task;
 
-public class TaskList2_T {
+public class TaskList_T {
 
   static final int MAX_LENGTH = 5;
   Task[] tasks = new Task[MAX_LENGTH];
