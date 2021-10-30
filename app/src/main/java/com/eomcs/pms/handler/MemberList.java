@@ -8,7 +8,7 @@ public class MemberList extends ArrayList {
     Object[] arr = toArray();
     for (Object obj : arr) {
       Member member = (Member) obj;
-      if(member.no == no) {
+      if (member.no == no) {
         return member;
       }
     }
@@ -17,9 +17,9 @@ public class MemberList extends ArrayList {
 
   public boolean exist(String name) {
     Object[] arr = toArray();
-    for(Object obj : arr) {
+    for (Object obj : arr) {
       Member member = (Member) obj;
-      if(member.name.equals(name)) {
+      if (member.name.equals(name)) {
         return true;
       }
     }
