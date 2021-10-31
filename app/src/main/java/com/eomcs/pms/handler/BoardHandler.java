@@ -21,7 +21,7 @@ public class BoardHandler {
 
     boardList.add(board);
   }
-
+  //ㄴㅁㅇ
   public void list() {
     System.out.println("[게시글 목록]");
 
