@@ -6,7 +6,11 @@ import com.eomcs.util.Prompt;
 
 public class MemberHandler {
 
-  LinkedList memberList = new LinkedList();
+  List memberList;
+
+  public MemberHandler(List memberList) {
+    this.memberList = memberList;
+  }
 
   public void add() {
     System.out.println("[회원 등록]");
