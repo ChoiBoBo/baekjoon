@@ -4,7 +4,7 @@ import java.sql.Date;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
 
-public class MemberHandler {
+public class MemberHandler_T {
 
   LinkedList memberList = new LinkedList();
 
