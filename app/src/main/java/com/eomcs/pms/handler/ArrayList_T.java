@@ -1,6 +1,6 @@
 package com.eomcs.pms.handler;
 
-public class ArrayList extends AbstractList {
+public class ArrayList_T extends AbstractList {
 
   static final int MAX_LENGTH = 5;
 
@@ -47,5 +47,4 @@ public class ArrayList extends AbstractList {
     }
     return -1;
   }
-
 }

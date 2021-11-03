@@ -1,6 +1,6 @@
 package com.eomcs.pms.handler;
 
-public class LinkedList extends  AbstractList {
+public class LinkedList_T extends AbstractList {
 
   static class Node {
     Object item;
@@ -13,7 +13,6 @@ public class LinkedList extends  AbstractList {
 
   Node head;
   Node tail;
-  int size;
 
   public void add(Object item) {
     // 새 노드를 만든다. 생성자를 호출할 때, 노드에 담을 Board 객체 주소를 넘긴다. 
