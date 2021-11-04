@@ -1,6 +1,6 @@
 package com.eomcs.pms.handler;
 
-public class LinkedList extends  AbstractList {
+public class LinkedList extends AbstractList {
 
   static class Node {
     Object item;
@@ -13,7 +13,6 @@ public class LinkedList extends  AbstractList {
 
   Node head;
   Node tail;
-  int size;
 
   public void add(Object item) {
     // 새 노드를 만든다. 생성자를 호출할 때, 노드에 담을 Board 객체 주소를 넘긴다. 
@@ -74,6 +73,60 @@ public class LinkedList extends  AbstractList {
 
     return false;
   }
+
+
+  @Override
+  public Object get(int index) {
+    if(index < 0 || index >= this.size) {
+      return null;
+    }
+
+    Node node = this.head;
+
+    for(int i = 0; i < this.size; i++) {
+      if(i == index) {
+        return node.item;
+      }
+      node = node.next;
+    }
+    return null;
+  }
+
+  @Override
+  public Object remove(int index) {
+    if(index < 0 || index >= this.size) {
+      return null;
+    }
+
+    Node node = head;
+    Node prev = null;
+
+    for(int i = 0; i < this.size; i++) {
+      if(i == index) {
+        Object deleted = node.item;
+        if(node == head) {
+          head == node.next;
+        } else {
+          prev.next = node.next;
+        }
+
+        node.item = null;
+        node.next= null;
+
+        if(node == tail) {
+          tail = prev;
+        }
+        size--;
+        return deleted;
+      }
+
+    } else {
+      prev = node;
+      node = node.next;
+    }
+  }
+
+  return null;
 }
 
 

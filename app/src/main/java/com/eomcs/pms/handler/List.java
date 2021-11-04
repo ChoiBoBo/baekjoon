@@ -5,6 +5,8 @@ public interface List {
   Object[] toArray();
   boolean remove(Object obj);
   int size();
+  Object get(int index);
+  Object remove(int index);
 }
 
 

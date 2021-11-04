@@ -47,4 +47,37 @@ public class ArrayList_T extends AbstractList {
     }
     return -1;
   }
+
+  @Override
+  public Object get(int index) {
+    if (index < 0 || index >= this.size) { // 유효하지 않은 인덱스인 경우
+      return null;
+    }
+    return this.list[index];
+  }
+
+  @Override
+  public Object remove(int index) {
+
+    if (index < 0 || index >= this.size) { // 인덱스가 무효하다면
+      return null;
+    }
+
+    Object deleted = this.list[index]; // 삭제할 항목 저장
+
+    for (int i = index + 1; i < this.size; i++) {
+      this.list[i - 1] = this.list[i];
+    }
+    this.list[--this.size] = null;
+
+    return deleted; // 삭제한 항목 리턴
+  }
 }
+
+
+
+
+
+
+
+
