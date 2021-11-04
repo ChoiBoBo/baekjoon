@@ -1,6 +1,6 @@
-package com.eomcs.pms.handler;
+package com.eomcs.util;
 
-public class LinkedList_T extends AbstractList {
+public class LinkedList extends AbstractList {
 
   static class Node {
     Object item;
