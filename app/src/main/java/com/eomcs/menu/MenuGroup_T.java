@@ -6,7 +6,7 @@ import com.eomcs.util.Prompt;
 // 역할
 // - 다른 메뉴를 포함하는 컨테이너 역할을 수행한다.
 // 
-public class MenuGroup extends Menu {
+public class MenuGroup_T extends Menu {
 
   // 메뉴의 bread crumb 목록 보관
   // 모든 메뉴가 공유할 객체이기 때문에 스태틱 멤버로 선언한다.
@@ -106,10 +106,12 @@ public class MenuGroup extends Menu {
 
         this.childs[menuNo - 1].execute();
 
-      } catch(Throwable e) {
-        System.out.println("-------------------");
-        System.out.printf("오류 발생 : %s\n", e.getClass().getName());
-        System.out.println("-------------------");
+      } catch (Throwable e) {
+        // try 블록 안에 있는 코드를 실행하다가 예외가 발생하면
+        // 다음 문장을 실행한 후 시스템을 멈추지 않고 실행을 계속한다.
+        System.out.println("--------------------------------------------------------------");
+        System.out.printf("오류 발생: %s\n", e.getClass().getName());
+        System.out.println("--------------------------------------------------------------");
       }
     }
   }
