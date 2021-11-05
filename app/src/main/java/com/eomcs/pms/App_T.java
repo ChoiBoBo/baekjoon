@@ -16,7 +16,7 @@ import com.eomcs.pms.handler.ProjectHandler;
 import com.eomcs.pms.handler.TaskHandler;
 import com.eomcs.util.Prompt;
 
-public class App {
+public class App_T {
   List<Board> boardList = new ArrayList<>();
   List<Member> memberList = new LinkedList<>();
   List<Project> projectList = new ArrayList<>();
@@ -42,11 +42,10 @@ public class App {
     MenuGroup mainMenuGroup = new MenuGroup("메인");
     mainMenuGroup.setPrevMenuTitle("종료");
 
-
     mainMenuGroup.add(new Menu("로그인") {
       @Override
       public void execute() {
-        authHandler.login();
+        authHandler.login(); 
       }
     });
 
