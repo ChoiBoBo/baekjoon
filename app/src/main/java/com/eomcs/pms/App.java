@@ -42,11 +42,17 @@ public class App {
     MenuGroup mainMenuGroup = new MenuGroup("메인");
     mainMenuGroup.setPrevMenuTitle("종료");
 
-
     mainMenuGroup.add(new Menu("로그인") {
       @Override
       public void execute() {
-        authHandler.login();
+        authHandler.login(); 
+      }
+    });
+
+    mainMenuGroup.add(new Menu("내정보") {
+      @Override
+      public void execute() { 
+        authHandler.displayLoginUser();
       }
     });
 

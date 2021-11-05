@@ -7,6 +7,7 @@ import com.eomcs.util.Prompt;
 public class AuthHandler_T {
 
   List<Member> memberList;
+  Member loginUser;
 
   public AuthHandler_T(List<Member> memberList) {
     this.memberList = memberList;
@@ -24,7 +25,23 @@ public class AuthHandler_T {
       System.out.println("이메일과 암호가 일치하는 회원을 찾을 수 없습니다.");
     } else {
       System.out.printf("%s님 환영합니다!\n", member.getName());
+      loginUser = member;
     }
+  }
+
+  public void displayLoginUser() {
+    System.out.println("[내정보]");
+
+    if (loginUser == null) {
+      System.out.println("로그인 하지 않았습니다.");
+      return;
+    }
+
+    System.out.printf("이름: %s\n", loginUser.getName());
+    System.out.printf("이메일: %s\n", loginUser.getEmail());
+    System.out.printf("사진: %s\n", loginUser.getPhoto());
+    System.out.printf("전화: %s\n", loginUser.getTel());
+    System.out.printf("등록일: %s\n", loginUser.getRegisteredDate());
   }
 
   private Member findByEmailPassword(String email, String password) {
