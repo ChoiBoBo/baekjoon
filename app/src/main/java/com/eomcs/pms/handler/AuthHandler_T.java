@@ -9,7 +9,7 @@ public class AuthHandler_T {
   List<Member> memberList;
   Member loginUser;
 
-  public AuthHandler_T(List<Member> memberList) {
+  public AuthHandler(List<Member> memberList) {
     this.memberList = memberList;
   }
 
@@ -42,6 +42,13 @@ public class AuthHandler_T {
     System.out.printf("사진: %s\n", loginUser.getPhoto());
     System.out.printf("전화: %s\n", loginUser.getTel());
     System.out.printf("등록일: %s\n", loginUser.getRegisteredDate());
+  }
+
+  public void logout() {
+    System.out.println("[로그아웃]");
+
+    loginUser = null;
+    System.out.println("로그아웃 하였습니다.");
   }
 
   private Member findByEmailPassword(String email, String password) {

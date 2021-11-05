@@ -29,10 +29,10 @@ public class AuthHandler {
     }
   }
 
-  public void displayloginUser() {
+  public void displayLoginUser() {
     System.out.println("[내정보]");
 
-    if(loginUser == null) {
+    if (loginUser == null) {
       System.out.println("로그인 하지 않았습니다.");
       return;
     }
@@ -44,9 +44,16 @@ public class AuthHandler {
     System.out.printf("등록일: %s\n", loginUser.getRegisteredDate());
   }
 
+  public void logout() {
+    System.out.println("[로그아웃]");
+
+    loginUser = null;
+    System.out.println("로그아웃 하였습니다.");
+  }
+
   private Member findByEmailPassword(String email, String password) {
-    for (Member member : memberList) {
-      if (member.getEmail().equalsIgnoreCase(email) &&
+    for(Member member : memberList) {
+      if(member.getEmail().equalsIgnoreCase(email) &&
           member.getPassword().equals(password)) {
         return member;
       }
