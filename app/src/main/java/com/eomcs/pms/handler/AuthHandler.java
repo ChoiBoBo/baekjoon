@@ -52,8 +52,8 @@ public class AuthHandler {
   }
 
   private Member findByEmailPassword(String email, String password) {
-    for(Member member : memberList) {
-      if(member.getEmail().equalsIgnoreCase(email) &&
+    for (Member member : memberList) {
+      if (member.getEmail().equalsIgnoreCase(email) &&
           member.getPassword().equals(password)) {
         return member;
       }

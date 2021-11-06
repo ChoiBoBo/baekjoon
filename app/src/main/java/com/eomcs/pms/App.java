@@ -63,8 +63,6 @@ public class App {
       }
     });
 
-
-
     MenuGroup boardMenu = new MenuGroup("게시판");
     mainMenuGroup.add(boardMenu);
 
