@@ -10,11 +10,11 @@ public abstract class Menu_T {
 
   int enableState;
 
-  public Menu(String title) {
+  public Menu_T(String title) {
     this.title = title;
   }
 
-  public Menu(String title, int enableState) {
+  public Menu_T(String title, int enableState) {
     this(title); // 메뉴 이름 설정은 기존 생성자를 통해 처리한다.
     this.enableState = enableState;
   }

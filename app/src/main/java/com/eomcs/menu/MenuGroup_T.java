@@ -8,7 +8,7 @@ import com.eomcs.util.Prompt;
 // 역할
 // - 다른 메뉴를 포함하는 컨테이너 역할을 수행한다.
 // 
-public class MenuGroup extends Menu {
+public class MenuGroup_T extends Menu {
 
   // 메뉴의 bread crumb 목록 보관
   // 모든 메뉴가 공유할 객체이기 때문에 스태틱 멤버로 선언한다.
@@ -24,11 +24,11 @@ public class MenuGroup extends Menu {
   // 컴파일 오류가 발생한다. 
   // Menu 클래스에는 기본 생성자가 없다. 
   // 따라서 개발자가 직접 생성자를 정의해야 한다.
-  public MenuGroup(String title) {
+  public MenuGroup_T(String title) {
     super(title);
   }
 
-  public MenuGroup(String title, boolean disablePrevMenu) {
+  public MenuGroup_T(String title, boolean disablePrevMenu) {
     super(title);
     this.disablePrevMenu = disablePrevMenu;
   }
@@ -83,23 +83,28 @@ public class MenuGroup extends Menu {
     // 현재 실행하는 메뉴를 스택에 보관한다.
     breadCrumb.push(this);
 
-    while (true) {
 
-      ArrayList<Menu> menulist = new ArrayList<>();
-      for(int i = 0; i < this.size; i++) {
-        if(this.childs[i].enableState == Menu.ENABLE_LOHOUT &&
+
+    while (true) {
+      // 출력될 메뉴 목록 준비
+      // 왜?
+      // - 메뉴 출력 속도를 빠르게 하기 위함.
+      // - 메뉴를 출력할 때 출력할 메뉴와 출력하지 말아야 할 메뉴를 구분하는 시간을 줄이기 위함.
+      // 
+      ArrayList<Menu> menuList = new ArrayList<>();
+      for (int i = 0; i < this.size; i++) {
+        if (this.childs[i].enableState == Menu.ENABLE_LOGOUT && 
             AuthHandler.getLoginUser() == null) {
           menuList.add(this.childs[i]);
 
-        } else if(this.childs[i].enableStatea == Menu.ENABLE_LOHOUT &&
+        } else if (this.childs[i].enableState == Menu.ENABLE_LOGIN && 
             AuthHandler.getLoginUser() != null) {
           menuList.add(this.childs[i]);
 
-        } else if(this.childs[i].enableState == Menu.ENABLE_ALL) {
-          MenuList.add(this.childs[i]);
-        }
+        } else if (this.childs[i].enableState == Menu.ENABLE_ALL) {
+          menuList.add(this.childs[i]);
+        } 
       }
-
 
       System.out.printf("\n[%s]\n", getBreadCrumb());
       int i = 1;
@@ -124,7 +129,7 @@ public class MenuGroup extends Menu {
           continue;
         }
 
-        this.childs[menuNo - 1].execute();
+        menuList.get(menuNo - 1).execute();
 
       } catch (Throwable e) {
         // try 블록 안에 있는 코드를 실행하다가 예외가 발생하면

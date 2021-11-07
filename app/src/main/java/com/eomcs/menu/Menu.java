@@ -2,15 +2,20 @@ package com.eomcs.menu;
 
 public abstract class Menu {
 
-  public static final int ENAVLE_ALL = 0;
-  public static final int ENAVLE_LOGOUT = 1;
-  public static final int ENAVLE_LOGINY = 2;
+  public static final int ENABLE_ALL = 0;
+  public static final int ENABLE_LOHOUT = 0;
+  public static final int ENABLE_LOGIN = 0;
 
   String title;
-  int enableState;
+  int enableState; 
 
   public Menu(String title) {
     this.title = title;
+  }
+
+  public Menu(String title, int enableState) {
+    this(title);
+    this.enableState = enableState;
   }
 
   public abstract void execute();

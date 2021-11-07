@@ -5,7 +5,7 @@ import java.util.List;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
 
-public class AuthHandler {
+public class AuthHandler_T {
 
   List<Member> memberList;
 
@@ -14,16 +14,16 @@ public class AuthHandler {
     return loginUser;
   }
 
-  public AuthHandler(List<Member> memberList) {
+  public AuthHandler_T(List<Member> memberList) {
     this.memberList = memberList;
 
     Member testUser = new Member();
     testUser.setNo(1);
     testUser.setName("aaa");
     testUser.setEmail("aaa@test.com");
-    testUser.setPassword("111");
+    testUser.setPassword("1111");
     testUser.setPhoto("aaa.gif");
-    testUser.setTel("010-111-1111");
+    testUser.setTel("010-1111-1111");
     testUser.setRegisteredDate(new Date(System.currentTimeMillis()));
 
     memberList.add(testUser);
