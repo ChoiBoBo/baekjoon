@@ -21,9 +21,9 @@ public class AuthHandler {
     testUser.setNo(1);
     testUser.setName("aaa");
     testUser.setEmail("aaa@test.com");
-    testUser.setPassword("111");
+    testUser.setPassword("1111");
     testUser.setPhoto("aaa.gif");
-    testUser.setTel("010-111-1111");
+    testUser.setTel("010-1111-1111");
     testUser.setRegisteredDate(new Date(System.currentTimeMillis()));
 
     memberList.add(testUser);

@@ -8,7 +8,7 @@ import com.eomcs.util.Prompt;
 // 역할
 // - 다른 메뉴를 포함하는 컨테이너 역할을 수행한다.
 // 
-public class MenuGroup_T extends Menu {
+public class MenuGroup extends Menu {
 
   // 메뉴의 bread crumb 목록 보관
   // 모든 메뉴가 공유할 객체이기 때문에 스태틱 멤버로 선언한다.
@@ -24,11 +24,11 @@ public class MenuGroup_T extends Menu {
   // 컴파일 오류가 발생한다. 
   // Menu 클래스에는 기본 생성자가 없다. 
   // 따라서 개발자가 직접 생성자를 정의해야 한다.
-  public MenuGroup_T(String title) {
+  public MenuGroup(String title) {
     super(title);
   }
 
-  public MenuGroup_T(String title, boolean disablePrevMenu) {
+  public MenuGroup(String title, boolean disablePrevMenu) {
     super(title);
     this.disablePrevMenu = disablePrevMenu;
   }
