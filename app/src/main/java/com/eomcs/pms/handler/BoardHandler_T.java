@@ -5,11 +5,11 @@ import java.util.List;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
 
-public class BoardHandler {
+public class BoardHandler_T {
 
   List<Board> boardList;
 
-  public BoardHandler(List<Board> boardList) {
+  public BoardHandler_T(List<Board> boardList) {
     this.boardList = boardList;
   }
 
@@ -82,11 +82,10 @@ public class BoardHandler {
       return;
     }
 
-    if(board.getWriter().getNo() != AuthHandler.getLoginUser().getNo()) {
+    if (board.getWriter().getNo() != AuthHandler.getLoginUser().getNo()) {
       System.out.println("변경 권한이 없습니다.");
       return;
     }
-
 
     String title = Prompt.inputString(String.format("제목(%s)? ", board.getTitle()));
     String content = Prompt.inputString(String.format("내용(%s)? ", board.getContent()));
@@ -113,7 +112,7 @@ public class BoardHandler {
       return;
     }
 
-    if(board.getWriter().getNo() != AuthHandler.getLoginUser().getNo()) {
+    if (board.getWriter().getNo() != AuthHandler.getLoginUser().getNo()) {
       System.out.println("삭제 권한이 없습니다.");
       return;
     }
