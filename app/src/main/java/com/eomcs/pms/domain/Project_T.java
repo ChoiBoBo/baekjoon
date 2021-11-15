@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Project {
+public class Project_T {
   private int no;
   private String title;
   private String content;
@@ -14,7 +14,12 @@ public class Project {
   private List<Member> members;
   private List<Task> tasks = new ArrayList<>();
 
-
+  @Override
+  public String toString() {
+    return "Project [no=" + no + ", title=" + title + ", content=" + content + ", startDate="
+        + startDate + ", endDate=" + endDate + ", owner=" + owner + ", members=" + members
+        + ", tasks=" + tasks + "]";
+  }
   public int getNo() {
     return no;
   }
@@ -57,12 +62,10 @@ public class Project {
   public void setMembers(List<Member> members) {
     this.members = members;
   }
-
   public List<Task> getTasks() {
     return tasks;
   }
-
-  public void setTasks(Lst<Task> tasks) {
+  public void setTasks(List<Task> tasks) {
     this.tasks = tasks;
   }
 }
