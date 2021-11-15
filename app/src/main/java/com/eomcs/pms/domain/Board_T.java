@@ -2,8 +2,7 @@ package com.eomcs.pms.domain;
 
 import java.sql.Date;
 
-//asd
-public class Board {
+public class Board_T {
   private int no;
   private String title;
   private String content;
@@ -37,12 +36,6 @@ public class Board {
   public void setContent(String content) {
     this.content = content;
   }
-  public Member getWriter() {
-    return writer;
-  }
-  public void setWriter(Member writer) {
-    this.writer = writer;
-  }
   public Date getRegisteredDate() {
     return registeredDate;
   }
@@ -61,4 +54,11 @@ public class Board {
   public void setLike(int like) {
     this.like = like;
   }
+  public Member getWriter() {
+    return writer;
+  }
+  public void setWriter(Member writer) {
+    this.writer = writer;
+  }
+
 }
