@@ -15,7 +15,7 @@ import com.eomcs.pms.handler.ProjectHandler;
 import com.eomcs.pms.handler.TaskHandler;
 import com.eomcs.util.Prompt;
 
-public class App {
+public class App_T {
   List<Board> boardList = new ArrayList<>();
   List<Member> memberList = new LinkedList<>();
   List<Project> projectList = new ArrayList<>();
@@ -89,14 +89,11 @@ public class App {
       public void execute() {
         boardHandler.delete(); 
       }});
-
     boardMenu.add(new Menu("검색") {
       @Override
       public void execute() {
         boardHandler.search(); 
       }});
-
-
 
     MenuGroup memberMenu = new MenuGroup("회원");
     mainMenuGroup.add(memberMenu);
