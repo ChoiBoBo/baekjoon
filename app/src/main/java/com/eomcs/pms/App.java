@@ -15,11 +15,13 @@ import com.eomcs.pms.handler.BoardAddHandler;
 import com.eomcs.pms.handler.BoardDeleteHandler;
 import com.eomcs.pms.handler.BoardDetailHandler;
 import com.eomcs.pms.handler.BoardListHandler;
+import com.eomcs.pms.handler.BoardSearchHandler;
 import com.eomcs.pms.handler.BoardUpdateHandler;
 import com.eomcs.pms.handler.MemberAddHandler;
 import com.eomcs.pms.handler.MemberDeleteHandler;
 import com.eomcs.pms.handler.MemberDetailHandler;
 import com.eomcs.pms.handler.MemberListHandler;
+import com.eomcs.pms.handler.MemberPromptHandler;
 import com.eomcs.pms.handler.MemberUpdateHandler;
 import com.eomcs.pms.handler.ProjectAddHandler;
 import com.eomcs.pms.handler.ProjectDeleteHandler;
@@ -43,17 +45,19 @@ public class App {
   BoardDetailHandler boardDetailHandler = new BoardDetailHandler(boardList);
   BoardUpdateHandler boardUpdateHandler = new BoardUpdateHandler(boardList);
   BoardDeleteHandler boardDeleteHandler = new BoardDeleteHandler(boardList);
+  BoardSearchHandler boardSearchHandler = new BoardSearchHandler(boardList);
 
   MemberAddHandler memberAddHandler = new MemberAddHandler(memberList);
   MemberListHandler memberListHandler = new MemberListHandler(memberList);
   MemberDetailHandler memberDetailHandler = new MemberDetailHandler(memberList);
   MemberUpdateHandler memberUpdateHandler = new MemberUpdateHandler(memberList);
   MemberDeleteHandler memberDeleteHandler = new MemberDeleteHandler(memberList);
+  MemberPromptHandler memberPromptHandler = new MemberPromptHandler(memberList);
 
-  ProjectAddHandler projectAddHandler = new ProjectAddHandler(projectList, memberListHandler);
+  ProjectAddHandler projectAddHandler = new ProjectAddHandler(projectList, memberPromptHandler);
   ProjectListHandler projectListHandler = new ProjectListHandler(projectList);
   ProjectDetailHandler projectDetailHandler = new ProjectDetailHandler(projectList);
-  ProjectUpdateHandler projectUpdateHandler = new ProjectUpdateHandler(projectList, memberListHandler);
+  ProjectUpdateHandler projectUpdateHandler = new ProjectUpdateHandler(projectList, memberPromptHandler);
   ProjectDeleteHandler projectDeleteHandler = new ProjectDeleteHandler(projectList);
 
   TaskAddHandler taskAddHandler = new TaskAddHandler(projectListHandler);
@@ -128,6 +132,11 @@ public class App {
       @Override
       public void execute() {
         boardDeleteHandler.delete(); 
+      }});
+    boardMenu.add(new Menu("검색") {
+      @Override
+      public void execute() {
+        boardSearchHandler.search(); 
       }});
 
     MenuGroup memberMenu = new MenuGroup("회원");
