@@ -35,7 +35,7 @@ import com.eomcs.pms.handler.TaskListHandler;
 import com.eomcs.pms.handler.TaskUpdateHandler;
 import com.eomcs.util.Prompt;
 
-public class App {
+public class App_T {
   List<Board> boardList = new ArrayList<>();
   List<Member> memberList = new LinkedList<>();
   List<Project> projectList = new ArrayList<>();
@@ -71,7 +71,7 @@ public class App {
   AuthUserInfoHandler authUserInfoHandler = new AuthUserInfoHandler();
 
   public static void main(String[] args) {
-    App app = new App(); 
+    App_T app = new App_T(); 
     app.service();
   }
 

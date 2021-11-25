@@ -9,8 +9,9 @@ public class BoardSearchHandler extends AbstractBoardHandler {
   public BoardSearchHandler(List<Board> boardList) {
     super(boardList);
   }
-  //asd
-  public void search() {
+
+  @Override
+  public void execute() {
     System.out.println("[게시글 검색]");
 
     String input = Prompt.inputString("검색어? ");
