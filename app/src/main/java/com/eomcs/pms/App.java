@@ -79,7 +79,7 @@ public class App {
     createMenu().execute();
     Prompt.close();
   }
-
+  //asd
   Menu createMenu() {
     MenuGroup mainMenuGroup = new MenuGroup("메인");
     mainMenuGroup.setPrevMenuTitle("종료");
@@ -98,6 +98,7 @@ public class App {
       }
     });
 
+    //asd
     mainMenuGroup.add(new Menu("로그아웃", Menu.ENABLE_LOGIN) {
       @Override
       public void execute() {
