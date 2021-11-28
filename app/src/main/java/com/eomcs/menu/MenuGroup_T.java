@@ -1,5 +1,5 @@
 package com.eomcs.menu;
-//asd
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -9,17 +9,16 @@ import com.eomcs.util.Prompt;
 // 역할
 // - 다른 메뉴를 포함하는 컨테이너 역할을 수행한다.
 // 
-public class MenuGroup extends Menu {
+public class MenuGroup_T extends Menu {
 
   // 메뉴의 bread crumb 목록 보관
   // 모든 메뉴가 공유할 객체이기 때문에 스태틱 멤버로 선언한다.
   static Stack<Menu> breadCrumb = new Stack<>();
 
-  ArrayList<Menu> childs = new ArrayList<>();
-
+  Menu[] childs = new Menu[100];
+  int size;
   boolean disablePrevMenu;
   String prevMenuTitle = "이전 메뉴";
-
 
   // 이전으로 이동시키는 메뉴를 표현하기 위해 만든 클래스
   private static class PrevMenu extends Menu {
@@ -32,11 +31,16 @@ public class MenuGroup extends Menu {
   }
   static PrevMenu prevMenu = new PrevMenu();
 
-  public MenuGroup(String title) {
+  // 생성자를 정의하지 않으면 컴파일러가 기본 생성자를 자동으로 추가해 준다.
+  // 문제는 컴파일러가 추가한 기본 생성자는 수퍼 클래스의 기본 생성자를 호출하기 때문에
+  // 컴파일 오류가 발생한다. 
+  // Menu 클래스에는 기본 생성자가 없다. 
+  // 따라서 개발자가 직접 생성자를 정의해야 한다.
+  public MenuGroup_T(String title) {
     super(title);
   }
 
-  public MenuGroup(String title, boolean disablePrevMenu) {
+  public MenuGroup_T(String title, boolean disablePrevMenu) {
     super(title);
     this.disablePrevMenu = disablePrevMenu;
   }

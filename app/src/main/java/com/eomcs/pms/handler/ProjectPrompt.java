@@ -39,5 +39,3 @@ public class ProjectPrompt {
     return null;
   }
 }
-
-
