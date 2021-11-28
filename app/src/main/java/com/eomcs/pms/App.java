@@ -98,7 +98,8 @@ public class App {
       }
     });
 
-    //asd
+    //asdas
+
     mainMenuGroup.add(new Menu("로그아웃", Menu.ENABLE_LOGIN) {
       @Override
       public void execute() {
