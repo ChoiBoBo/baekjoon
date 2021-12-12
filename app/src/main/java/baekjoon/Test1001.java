@@ -2,7 +2,7 @@ package baekjoon;
 
 import java.util.Scanner;
 
-// 1001 문제
+// 1001 문제 asd
 public class Test1001 {
 
   public static void main(String[] args) {
