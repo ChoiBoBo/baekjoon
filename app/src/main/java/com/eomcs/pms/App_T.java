@@ -12,7 +12,7 @@ import java.sql.Date;
 //    - Prompt 클래스의 메서드들이 사용하는 변수도 옮긴다.
 //      - keyboardScan 변수를 옮긴다.
 //
-public class App {
+public class App_t {
 
   // 회원 데이터
   static final int LENGTH = 100;

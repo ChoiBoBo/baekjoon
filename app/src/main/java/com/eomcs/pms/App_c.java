@@ -11,30 +11,22 @@ import java.sql.Date;
 //      - promptDate() ==> inputDate()
 //    - Prompt 클래스의 메서드들이 사용하는 변수도 옮긴다.
 //      - keyboardScan 변수를 옮긴다.
+// 2) 회원 데이터를 다루는 메서드를 별도로 분류한다.
+//    - MemberHandler 클래스를 생성한다.
+//    - addMember(), listMember() 메서드를 옮긴다.
+//    - MemberHandler의 메서드들이 사용할 변수를 App에서 옮겨 온다.
+//    - 메서드의 이름을 변경한다.
+//      - addMember() ==> add()
+//      - listMember() ==> list();
+// 3) 프로젝트 데이터를 다루는 메서드를 별도로 분류한다.
+//    - ProjectHandler 클래스를 생성한다.
+//    - addProject(), listProject() 메서드를 옮긴다.
+//    - ProjectHandler의 메서드들이 사용할 변수를 App에서 옮겨 온다.
+//    - 메서드의 이름을 변경한다.
+//      - addProject() ==> add()
+//      - listProject() ==> list();
 //
-public class App {
-
-  // 회원 데이터
-  static final int LENGTH = 100;
-  static int[] no = new int[LENGTH];
-  static String[] name = new String[LENGTH];
-  static String[] email = new String[LENGTH];
-  static String[] password = new String[LENGTH];
-  static String[] photo = new String[LENGTH];
-  static String[] tel = new String[LENGTH];
-  static Date[] registeredDate = new Date[LENGTH];  
-  static int size = 0;
-
-  // 프로젝트 데이터
-  static final int PLENGTH = 100;
-  static int[] pno = new int[PLENGTH];
-  static String[] ptitle = new String[PLENGTH];
-  static String[] pcontent = new String[PLENGTH];
-  static Date[] pstartDate = new Date[PLENGTH];
-  static Date[] pendDate = new Date[PLENGTH];
-  static String[] powner = new String[PLENGTH];
-  static String[] pmembers = new String[PLENGTH];  
-  static int psize = 0;
+public class App_c {
 
   // 작업 데이터
   static final int TLENGTH = 100;
@@ -53,16 +45,16 @@ public class App {
 
         switch (command) {
           case "/member/add":
-            addMember();
+            MemberHandler.add();
             break;
           case "/member/list":
-            listMember();
+            MemberHandler.list();
             break;
           case "/project/add":
-            addProject();
+            ProjectHandler.add();
             break;
           case "/project/list":
-            listProject();
+            ProjectHandler.list();
             break;
           case "/task/add":
             addTask();
@@ -81,53 +73,6 @@ public class App {
       }
 
     Prompt.keyboardScan.close();
-  }
-
-  static void addMember() {
-    System.out.println("[회원 등록]");
-
-    no[size] = Prompt.inputInt("번호? ");
-    name[size] = Prompt.inputString("이름? ");
-    email[size] = Prompt.inputString("이메일? ");
-    password[size] = Prompt.inputString("암호? ");
-    photo[size] = Prompt.inputString("사진? ");
-    tel[size] = Prompt.inputString("전화? ");
-    registeredDate[size] = new java.sql.Date(System.currentTimeMillis());
-    size++;
-  }
-
-  static void listMember() {
-    System.out.println("[회원 목록]");
-
-    for (int i = 0; i < size; i++) {
-      // 번호, 이름, 이메일, 전화, 가입일
-      System.out.printf("%d, %s, %s, %s, %s\n", // 출력 형식 지정
-          no[i], name[i], email[i], tel[i], registeredDate[i]);
-    }
-  }
-
-  static void addProject() {
-    System.out.println("[프로젝트 등록]");
-
-    pno[psize] = Prompt.inputInt("번호? ");
-    ptitle[psize] = Prompt.inputString("프로젝트명? ");
-    pcontent[psize] = Prompt.inputString("내용? ");
-    pstartDate[psize] = Prompt.inputDate("시작일? ");
-    pendDate[psize] = Prompt.inputDate("종료일? ");
-    powner[psize] = Prompt.inputString("만든이? ");
-    pmembers[psize] = Prompt.inputString("팀원? ");
-
-    psize++;
-  }
-
-  static void listProject() {
-    System.out.println("[프로젝트 목록]");
-
-    for (int i = 0; i < psize; i++) {
-      // 번호, 프로젝트명, 시작일, 종료일, 만든이
-      System.out.printf("%d, %s, %s, %s, %s\n", // 출력 형식 지정
-          pno[i], ptitle[i], pstartDate[i], pendDate[i], powner[i]);
-    }
   }
 
   static void addTask() {

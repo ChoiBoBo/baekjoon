@@ -11,19 +11,15 @@ import java.sql.Date;
 //      - promptDate() ==> inputDate()
 //    - Prompt 클래스의 메서드들이 사용하는 변수도 옮긴다.
 //      - keyboardScan 변수를 옮긴다.
-//
-public class App {
-
-  // 회원 데이터
-  static final int LENGTH = 100;
-  static int[] no = new int[LENGTH];
-  static String[] name = new String[LENGTH];
-  static String[] email = new String[LENGTH];
-  static String[] password = new String[LENGTH];
-  static String[] photo = new String[LENGTH];
-  static String[] tel = new String[LENGTH];
-  static Date[] registeredDate = new Date[LENGTH];  
-  static int size = 0;
+// 2) 회원 데이터를 다루는 메서드를 별도로 분류한다.
+//    - MemberHandler 클래스를 생성한다.
+//    - addMember(), listMember() 메서드를 옮긴다.
+//    - MemberHandler의 메서드들이 사용할 변수를 App에서 옮겨 온다.
+//    - 메서드의 이름을 변경한다.
+//      - addMember() ==> add()
+//      - listMember() ==> list();
+//  
+public class App_b {
 
   // 프로젝트 데이터
   static final int PLENGTH = 100;
@@ -53,10 +49,10 @@ public class App {
 
         switch (command) {
           case "/member/add":
-            addMember();
+            MemberHandler.add();
             break;
           case "/member/list":
-            listMember();
+            MemberHandler.list();
             break;
           case "/project/add":
             addProject();
@@ -83,28 +79,7 @@ public class App {
     Prompt.keyboardScan.close();
   }
 
-  static void addMember() {
-    System.out.println("[회원 등록]");
 
-    no[size] = Prompt.inputInt("번호? ");
-    name[size] = Prompt.inputString("이름? ");
-    email[size] = Prompt.inputString("이메일? ");
-    password[size] = Prompt.inputString("암호? ");
-    photo[size] = Prompt.inputString("사진? ");
-    tel[size] = Prompt.inputString("전화? ");
-    registeredDate[size] = new java.sql.Date(System.currentTimeMillis());
-    size++;
-  }
-
-  static void listMember() {
-    System.out.println("[회원 목록]");
-
-    for (int i = 0; i < size; i++) {
-      // 번호, 이름, 이메일, 전화, 가입일
-      System.out.printf("%d, %s, %s, %s, %s\n", // 출력 형식 지정
-          no[i], name[i], email[i], tel[i], registeredDate[i]);
-    }
-  }
 
   static void addProject() {
     System.out.println("[프로젝트 등록]");
