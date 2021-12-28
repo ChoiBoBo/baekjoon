@@ -1,7 +1,7 @@
 package com.eomcs.pms;
 
 import java.sql.Date;
-
+//as
 // 1) 프롬프트 관련 메서드를 별도로 분류한다.
 //    - Prompt 클래스를 생성한다.
 //    - promptString(), promptInt(), promptDate() 메서드를 옮긴다.
