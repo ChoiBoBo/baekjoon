@@ -11,7 +11,7 @@ import java.sql.Date;
 //      - promptDate() ==> inputDate()
 //    - Prompt 클래스의 메서드들이 사용하는 변수도 옮긴다.
 //      - keyboardScan 변수를 옮긴다.
-///asd
+///asdss
 public class App_t {
 
   // 회원 데이터
