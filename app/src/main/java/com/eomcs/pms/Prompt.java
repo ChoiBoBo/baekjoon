@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.Scanner;
 
 public class Prompt {
-
+  /ass
   static Scanner keyboardScan = new Scanner(System.in);
 
   static String inputString(String title) {
