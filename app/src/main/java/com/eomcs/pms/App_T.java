@@ -11,8 +11,8 @@ import java.sql.Date;
 //      - promptDate() ==> inputDate()
 //    - Prompt 클래스의 메서드들이 사용하는 변수도 옮긴다.
 //      - keyboardScan 변수를 옮긴다.
-///asdsssssssss
-public class App_t {
+//
+public class App_T {
 
   // 회원 데이터
   static final int LENGTH = 100;
@@ -35,7 +35,6 @@ public class App_t {
   static String[] powner = new String[PLENGTH];
   static String[] pmembers = new String[PLENGTH];  
   static int psize = 0;
-  static float s = 1;
 
   // 작업 데이터
   static final int TLENGTH = 100;

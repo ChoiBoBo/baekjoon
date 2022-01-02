@@ -1,17 +1,7 @@
 package com.eomcs.pms;
 
 import java.sql.Date;
-//asasdasd
-// 1) 프롬프트 관련 메서드를 별도로 분류한다.
-//    - Prompt 클래스를 생성한다.
-//    - promptString(), promptInt(), promptDate() 메서드를 옮긴다.
-//    - 메서드 이름을 변경한다.
-//      - promptString() ==> inputString()
-//      - promptInt() ==> inputInt()
-//      - promptDate() ==> inputDate()
-//    - Prompt 클래스의 메서드들이 사용하는 변수도 옮긴다.
-//      - keyboardScan 변수를 옮긴다.
-//
+
 public class App {
 
   // 회원 데이터
@@ -49,7 +39,7 @@ public class App {
 
     loop:
       while (true) {
-        String command = Prompt.inputString("명령> ");
+        String command = promptString("명령> ");
 
         switch (command) {
           case "/member/add":
@@ -80,18 +70,18 @@ public class App {
         System.out.println(); // 이전 명령의 실행을 구분하기 위해 빈 줄 출력
       }
 
-    Prompt.keyboardScan.close();
+    keyboardScan.close();
   }
 
   static void addMember() {
     System.out.println("[회원 등록]");
 
-    no[size] = Prompt.inputInt("번호? ");
-    name[size] = Prompt.inputString("이름? ");
-    email[size] = Prompt.inputString("이메일? ");
-    password[size] = Prompt.inputString("암호? ");
-    photo[size] = Prompt.inputString("사진? ");
-    tel[size] = Prompt.inputString("전화? ");
+    no[size] = promptInt("번호? ");
+    name[size] = promptString("이름? ");
+    email[size] = promptString("이메일? ");
+    password[size] = promptString("암호? ");
+    photo[size] = promptString("사진? ");
+    tel[size] = promptString("전화? ");
     registeredDate[size] = new java.sql.Date(System.currentTimeMillis());
     size++;
   }
@@ -109,13 +99,13 @@ public class App {
   static void addProject() {
     System.out.println("[프로젝트 등록]");
 
-    pno[psize] = Prompt.inputInt("번호? ");
-    ptitle[psize] = Prompt.inputString("프로젝트명? ");
-    pcontent[psize] = Prompt.inputString("내용? ");
-    pstartDate[psize] = Prompt.inputDate("시작일? ");
-    pendDate[psize] = Prompt.inputDate("종료일? ");
-    powner[psize] = Prompt.inputString("만든이? ");
-    pmembers[psize] = Prompt.inputString("팀원? ");
+    pno[psize] = promptInt("번호? ");
+    ptitle[psize] = promptString("프로젝트명? ");
+    pcontent[psize] = promptString("내용? ");
+    pstartDate[psize] = promptDate("시작일? ");
+    pendDate[psize] = promptDate("종료일? ");
+    powner[psize] = promptString("만든이? ");
+    pmembers[psize] = promptString("팀원? ");
 
     psize++;
   }
@@ -133,11 +123,11 @@ public class App {
   static void addTask() {
     System.out.println("[작업 등록]");
 
-    tno[tsize] = Prompt.inputInt("번호? ");
-    tcontent[tsize] = Prompt.inputString("내용? ");
-    tdeadline[tsize] = Prompt.inputDate("마감일? ");
-    tstatus[tsize] = Prompt.inputInt("상태?\n0: 신규\n1: 진행중\n2: 완료\n> ");
-    towner[tsize] = Prompt.inputString("담당자? ");
+    tno[tsize] = promptInt("번호? ");
+    tcontent[tsize] = promptString("내용? ");
+    tdeadline[tsize] = promptDate("마감일? ");
+    tstatus[tsize] = promptInt("상태?\n0: 신규\n1: 진행중\n2: 완료\n> ");
+    towner[tsize] = promptString("담당자? ");
 
     tsize++;
   }
@@ -162,5 +152,6 @@ public class App {
           tno[i], tcontent[i], tdeadline[i], stateLabel, towner[i]);
     }
   }
+
 
 }
