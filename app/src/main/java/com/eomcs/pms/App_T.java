@@ -35,6 +35,7 @@ public class App_t {
   static String[] powner = new String[PLENGTH];
   static String[] pmembers = new String[PLENGTH];  
   static int psize = 0;
+  static float s = 1;
 
   // 작업 데이터
   static final int TLENGTH = 100;
