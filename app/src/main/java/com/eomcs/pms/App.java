@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class App {
 
-  // 회원 데이터
+  // 회원 데이터 추출
   static final int LENGTH = 100;
   static int[] no = new int[LENGTH];
   static String[] name = new String[LENGTH];
