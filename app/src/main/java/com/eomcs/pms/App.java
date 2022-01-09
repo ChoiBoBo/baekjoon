@@ -26,7 +26,7 @@ public class App {
   static String[] pmembers = new String[PLENGTH];  
   static int psize = 0;
 
-  // 작업 데이터
+  // 작업 데이터!
   static final int TLENGTH = 100;
   static int[] tno = new int[TLENGTH];
   static String[] tcontent = new String[TLENGTH];
